@@ -16,6 +16,7 @@ package com.google.devtools.build.lib.remote;
 import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.truth.Truth.assertThat;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -172,7 +173,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -264,7 +265,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -383,7 +384,7 @@ public class ByteStreamUploaderTest {
     int chunkSize = 1024;
     int skipSize = chunkSize + 1;
     byte[] blob = new byte[chunkSize * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker =
         Chunker.builder().setInput(blob).setCompressed(true).setChunkSize(chunkSize).build();
@@ -502,7 +503,7 @@ public class ByteStreamUploaderTest {
 
     int chunkSize = 1024;
     byte[] blob = new byte[chunkSize * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker =
         Chunker.builder().setInput(blob).setCompressed(true).setChunkSize(chunkSize).build();
@@ -560,7 +561,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -619,7 +620,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -689,7 +690,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
     // provide only enough data to write a single chunk
     InputStream in = new ByteArrayInputStream(blob, 0, CHUNK_SIZE);
 
@@ -727,7 +728,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -781,7 +782,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -816,7 +817,7 @@ public class ByteStreamUploaderTest {
     int numUploads = 10;
     Map<HashCode, byte[]> blobsByHash = Maps.newHashMap();
     Map<Digest, Chunker> chunkers = Maps.newHashMapWithExpectedSize(numUploads);
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < numUploads; i++) {
       int blobSize = rand.nextInt(CHUNK_SIZE * 10) + CHUNK_SIZE;
       byte[] blob = new byte[blobSize];
@@ -885,7 +886,7 @@ public class ByteStreamUploaderTest {
     int numUploads = 1000;
     Map<HashCode, byte[]> blobsByHash = Maps.newHashMap();
     Map<Digest, Chunker> chunkers = Maps.newHashMapWithExpectedSize(numUploads);
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < numUploads; i++) {
       int blobSize = rand.nextInt(CHUNK_SIZE * 10) + CHUNK_SIZE;
       byte[] blob = new byte[blobSize];
@@ -922,7 +923,7 @@ public class ByteStreamUploaderTest {
     int numUploads = 10;
     Map<HashCode, byte[]> blobsByHash = Maps.newHashMap();
     Map<Digest, Chunker> chunkers = Maps.newHashMapWithExpectedSize(numUploads);
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < numUploads; i++) {
       int blobSize = rand.nextInt(CHUNK_SIZE * 10) + CHUNK_SIZE;
       byte[] blob = new byte[blobSize];
@@ -1370,7 +1371,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -1427,7 +1428,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     Chunker chunker = Chunker.builder().setInput(blob).setChunkSize(CHUNK_SIZE).build();
     Digest digest = DIGEST_UTIL.compute(blob);
@@ -1498,7 +1499,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE - 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     serviceRegistry.addService(
         new ByteStreamImplBase() {
@@ -1558,7 +1559,7 @@ public class ByteStreamUploaderTest {
             /* digestFunction= */ DigestFunction.Value.SHA256);
 
     byte[] blob = new byte[CHUNK_SIZE * 2 + 1];
-    new Random().nextBytes(blob);
+    new SecureRandom().nextBytes(blob);
 
     AtomicInteger numUploads = new AtomicInteger();
 
@@ -1682,7 +1683,7 @@ public class ByteStreamUploaderTest {
 
     private final Map<HashCode, byte[]> blobsByHash;
     private final Set<HashCode> uploadsFailedOnce = Collections.synchronizedSet(Sets.newHashSet());
-    private final Random rand = new Random();
+    private final Random rand = new SecureRandom();
 
     MaybeFailOnceUploadService(Map<HashCode, byte[]> blobsByHash) {
       this.blobsByHash = blobsByHash;

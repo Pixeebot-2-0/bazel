@@ -18,6 +18,7 @@ import com.google.devtools.build.runfiles.Runfiles;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,7 +54,7 @@ public class LoadTest {
 
     // write some random numbers to the file
     try (final PrintWriter out = new PrintWriter(new FileWriter(tempFile))) {
-      final Random r = new Random();
+      final Random r = new SecureRandom();
       for (int i = 0; i < 100; i++) {
         out.println(String.valueOf(r.nextDouble()));
       }

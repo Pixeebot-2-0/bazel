@@ -15,6 +15,7 @@
 package com.google.devtools.build.lib.graph;
 
 import static com.google.common.truth.Truth.assertThat;
+import java.security.SecureRandom;
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.fail;
 
@@ -44,7 +45,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class DigraphConcurrentTest {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   // need to have contention.
   private static final int THREAD_COUNT = Runtime.getRuntime().availableProcessors() * 3;

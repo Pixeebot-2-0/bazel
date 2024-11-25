@@ -14,6 +14,7 @@
 package com.google.devtools.build.lib.remote;
 
 import static com.google.common.truth.Truth.assertThat;
+import java.security.SecureRandom;
 import static org.junit.Assume.assumeNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -167,7 +168,7 @@ public class ByteStreamBuildEventArtifactUploaderTest {
     int numUploads = 2;
     Map<HashCode, byte[]> blobsByHash = new HashMap<>();
     Map<Path, LocalFile> filesToUpload = new HashMap<>();
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < numUploads; i++) {
       Path file = fs.getPath("/file" + i);
       OutputStream out = file.getOutputStream();
@@ -208,7 +209,7 @@ public class ByteStreamBuildEventArtifactUploaderTest {
     int numUploads = 2;
     Map<HashCode, byte[]> blobsByHash = new HashMap<>();
     Map<Path, LocalFile> filesToUpload = new HashMap<>();
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < numUploads; i++) {
       Path file = fs.getPath("/file" + i);
       OutputStream out = file.getOutputStream();
@@ -365,7 +366,7 @@ public class ByteStreamBuildEventArtifactUploaderTest {
     int numUploads = 10;
     Map<HashCode, byte[]> blobsByHash = new HashMap<>();
     Map<Path, LocalFile> filesToUpload = new HashMap<>();
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < numUploads; i++) {
       Path file = fs.getPath("/file" + i);
       OutputStream out = file.getOutputStream();

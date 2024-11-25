@@ -41,6 +41,7 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -192,7 +193,7 @@ public final class ExampleWorker {
         System.out.println("    at java.lang.Thread.run(Thread.java:745)");
         System.out.print("And now, 8k of random bytes: ");
         byte[] b = new byte[8192];
-        new Random().nextBytes(b);
+        new SecureRandom().nextBytes(b);
         try {
           System.out.write(b);
         } catch (IOException e) {

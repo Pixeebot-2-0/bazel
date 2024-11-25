@@ -18,6 +18,7 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.common.collect.ImmutableList;
 import com.google.devtools.build.lib.util.Fingerprint;
 import com.google.devtools.build.lib.vfs.DigestHashFunction;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -86,7 +87,7 @@ public class DigestMapTest {
       Thread thread =
           new Thread(
               () -> {
-                Random random = new Random();
+                Random random = new SecureRandom();
                 while (!done.get()) {
                   int index = random.nextInt(count);
                   Object key = keys[index];

@@ -32,6 +32,7 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -209,7 +210,7 @@ public class ExampleWorkerMultiplexer {
             System.out.println("    at java.lang.Thread.run(Thread.java:745)");
             System.out.print("And now, 8k of random bytes: ");
             byte[] b = new byte[8192];
-            new Random().nextBytes(b);
+            new SecureRandom().nextBytes(b);
             System.out.write(b);
           } else {
             try {
@@ -254,7 +255,7 @@ public class ExampleWorkerMultiplexer {
     List<String> outputs = new ArrayList<>();
 
     if (options.delay) {
-      Integer randomDelay = new Random().nextInt(200) + 100;
+      Integer randomDelay = new SecureRandom().nextInt(200) + 100;
       TimeUnit.MILLISECONDS.sleep(randomDelay);
       outputs.add("DELAY " + randomDelay + " MILLISECONDS");
     }

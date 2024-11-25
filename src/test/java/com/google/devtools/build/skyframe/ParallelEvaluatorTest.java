@@ -22,6 +22,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.google.devtools.build.lib.testutil.EventIterableSubjectFactory.assertThatEvents;
 import static com.google.devtools.build.skyframe.EvaluationResultSubjectFactory.assertThatEvaluationResult;
 import static com.google.devtools.build.skyframe.GraphTester.CONCATENATE;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.eq;
@@ -4149,7 +4150,7 @@ public class ParallelEvaluatorTest {
     AtomicInteger actualRunnableCount = new AtomicInteger(0);
 
     // Let's arbitrarily set the expected size of Runnables as a random number between 10 and 30.
-    int expectRunnableCount = 10 + new Random().nextInt(20);
+    int expectRunnableCount = 10 + new SecureRandom().nextInt(20);
 
     SkyFunction testFunction =
         (key, env) -> {
@@ -4204,7 +4205,7 @@ public class ParallelEvaluatorTest {
     AtomicInteger actualRunnableCount = new AtomicInteger(0);
 
     // Let's arbitrarily set the expected size of Runnables as a random number between 10 and 30.
-    int expectRunnableCount = 10 + new Random().nextInt(20);
+    int expectRunnableCount = 10 + new SecureRandom().nextInt(20);
 
     SkyFunction testFunction =
         (key, env) -> {

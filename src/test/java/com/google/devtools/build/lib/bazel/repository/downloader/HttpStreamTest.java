@@ -18,6 +18,7 @@ import static com.google.common.io.ByteStreams.toByteArray;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.devtools.build.lib.bazel.repository.downloader.DownloaderTestUtils.makeUrl;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -58,7 +59,7 @@ import org.mockito.stubbing.Answer;
 @RunWith(JUnit4.class)
 public class HttpStreamTest {
 
-  private static final Random randoCalrissian = new Random();
+  private static final Random randoCalrissian = new SecureRandom();
   private static final byte[] data = "hello".getBytes(UTF_8);
 
   private static Optional<Checksum> makeChecksum(String string) {

@@ -21,6 +21,7 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.core.SingleEmitter;
 import io.reactivex.rxjava3.observers.TestObserver;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutorService;
@@ -312,7 +313,7 @@ public class AsyncTaskCacheTest {
   public void execute_executeAndDisposeLoop_noErrors() throws Throwable {
     int taskCount = 1000;
     int maxKey = 20;
-    Random random = new Random();
+    Random random = new SecureRandom();
     ExecutorService executorService = Executors.newFixedThreadPool(taskCount);
     AsyncTaskCache.NoResult<String> cache = AsyncTaskCache.NoResult.create();
     AtomicReference<Throwable> error = new AtomicReference<>(null);
@@ -353,7 +354,7 @@ public class AsyncTaskCacheTest {
   public void execute_executeWithFutureAndCancelLoop_noErrors() throws Throwable {
     int taskCount = 1000;
     int maxKey = 20;
-    Random random = new Random();
+    Random random = new SecureRandom();
     ExecutorService executorService = Executors.newFixedThreadPool(taskCount);
     AsyncTaskCache.NoResult<String> cache = AsyncTaskCache.NoResult.create();
     AtomicReference<Throwable> error = new AtomicReference<>(null);

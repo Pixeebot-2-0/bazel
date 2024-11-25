@@ -33,6 +33,7 @@ import com.google.perftools.profiles.ProfileProto.Sample;
 import com.google.perftools.profiles.ProfileProto.ValueType;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
@@ -109,7 +110,7 @@ public final class AllocationTracker implements Sampler, Debug.ThreadHook {
 
   private final ThreadLocal<LongValue> currentSampleBytes = ThreadLocal.withInitial(LongValue::new);
   private final ThreadLocal<Long> nextSampleBytes = ThreadLocal.withInitial(this::getNextSample);
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   AllocationTracker(int samplePeriod, int variance) {
     this.samplePeriod = samplePeriod;
