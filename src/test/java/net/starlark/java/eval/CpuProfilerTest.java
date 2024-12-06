@@ -14,6 +14,7 @@
 package net.starlark.java.eval;
 
 import com.google.common.io.ByteStreams;
+import io.github.pixee.security.SystemCommand;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -95,8 +96,7 @@ public final class CpuProfilerTest {
     // Runtime.exec is deprecated at Google but its open-source replacement is not yet available.
     @SuppressWarnings("RuntimeExec")
     Process pprof =
-        Runtime.getRuntime()
-            .exec(pprofCmd + " -top " + profile, /*envp=*/ new String[0], /*dir=*/ null);
+        SystemCommand.runCommand(Runtime.getRuntime(), pprofCmd + " -top " + profile, new String[0], null);
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     ByteStreams.copy(pprof.getInputStream(), out);
     String got = out.toString(); // encoding undefined but unimportant---result is ASCII
