@@ -16,6 +16,8 @@ package com.google.devtools.build.lib.bazel.repository.downloader;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.devtools.build.lib.bazel.repository.downloader.DownloaderTestUtils.sendLines;
 import static com.google.devtools.build.lib.bazel.repository.downloader.HttpParser.readHttpRequest;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertThrows;
@@ -118,7 +120,7 @@ public class HttpDownloaderTest {
           download(
               downloadManager,
               Collections.singletonList(
-                  new URL(String.format("http://localhost:%d/foo", server.getLocalPort()))),
+                  Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS)),
               Collections.emptyMap(),
               Collections.emptyMap(),
               Optional.empty(),
@@ -178,8 +180,8 @@ public class HttpDownloaderTest {
               });
 
       final List<URL> urls = new ArrayList<>(2);
-      urls.add(new URL(String.format("http://localhost:%d/foo", server1.getLocalPort())));
-      urls.add(new URL(String.format("http://localhost:%d/foo", server2.getLocalPort())));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server1.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server2.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
 
       Path resultingFile =
           download(
@@ -247,8 +249,8 @@ public class HttpDownloaderTest {
               });
 
       final List<URL> urls = new ArrayList<>(2);
-      urls.add(new URL(String.format("http://localhost:%d/foo", server1.getLocalPort())));
-      urls.add(new URL(String.format("http://localhost:%d/foo", server2.getLocalPort())));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server1.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server2.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
 
       Path resultingFile =
           download(
@@ -317,8 +319,8 @@ public class HttpDownloaderTest {
               });
 
       final List<URL> urls = new ArrayList<>(2);
-      urls.add(new URL(String.format("http://localhost:%d/foo", server1.getLocalPort())));
-      urls.add(new URL(String.format("http://localhost:%d/foo", server2.getLocalPort())));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server1.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server2.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
 
       Path outputFile = fs.getPath(workingDir.newFile().getAbsolutePath());
       try {
@@ -380,7 +382,7 @@ public class HttpDownloaderTest {
       Path destination = fs.getPath(workingDir.newFile().getAbsolutePath());
       httpDownloader.download(
           Collections.singletonList(
-              new URL(String.format("http://localhost:%d/foo", server.getLocalPort()))),
+              Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS)),
           Collections.emptyMap(),
           StaticCredentials.EMPTY,
           Optional.empty(),
@@ -420,7 +422,7 @@ public class HttpDownloaderTest {
           () ->
               httpDownloader.download(
                   Collections.singletonList(
-                      new URL(String.format("http://localhost:%d/foo", server.getLocalPort()))),
+                      Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS)),
                   Collections.emptyMap(),
                   StaticCredentials.EMPTY,
                   Optional.empty(),
@@ -476,8 +478,8 @@ public class HttpDownloaderTest {
               });
 
       final List<URL> urls = new ArrayList<>(2);
-      urls.add(new URL(String.format("http://localhost:%d/foo", server1.getLocalPort())));
-      urls.add(new URL(String.format("http://localhost:%d/foo", server2.getLocalPort())));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server1.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
+      urls.add(Urls.create(String.format("http://localhost:%d/foo", server2.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
 
       Path destination = fs.getPath(workingDir.newFile().getAbsolutePath());
       httpDownloader.download(
@@ -520,7 +522,7 @@ public class HttpDownloaderTest {
       assertThat(
               new String(
                   httpDownloader.downloadAndReadOneUrl(
-                      new URL(String.format("http://localhost:%d/foo", server.getLocalPort())),
+                      Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS),
                       StaticCredentials.EMPTY,
                       Optional.empty(),
                       eventHandler,
@@ -556,7 +558,7 @@ public class HttpDownloaderTest {
           IOException.class,
           () ->
               httpDownloader.downloadAndReadOneUrl(
-                  new URL(String.format("http://localhost:%d/foo", server.getLocalPort())),
+                  Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS),
                   StaticCredentials.EMPTY,
                   Optional.empty(),
                   eventHandler,
@@ -590,7 +592,7 @@ public class HttpDownloaderTest {
       assertThat(
               new String(
                   httpDownloader.downloadAndReadOneUrl(
-                      new URL(String.format("http://localhost:%d/foo", server.getLocalPort())),
+                      Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS),
                       StaticCredentials.EMPTY,
                       Optional.of(
                           Checksum.fromString(
@@ -630,7 +632,7 @@ public class HttpDownloaderTest {
               UnrecoverableHttpException.class,
               () ->
                   httpDownloader.downloadAndReadOneUrl(
-                      new URL(String.format("http://localhost:%d/foo", server.getLocalPort())),
+                      Urls.create(String.format("http://localhost:%d/foo", server.getLocalPort()), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS),
                       StaticCredentials.EMPTY,
                       Optional.of(
                           Checksum.fromString(
