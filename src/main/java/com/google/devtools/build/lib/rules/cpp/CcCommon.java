@@ -641,7 +641,7 @@ public final class CcCommon implements StarlarkValue {
 
     RuleClass ruleClass = rule.getRuleClassObject();
     Label label = ruleClass.getRuleDefinitionEnvironmentLabel();
-    if (label.getRepository().getName().equals("_builtins")) {
+    if ("_builtins".equals(label.getRepository().getName())) {
       // always permit builtins
       return true;
     }

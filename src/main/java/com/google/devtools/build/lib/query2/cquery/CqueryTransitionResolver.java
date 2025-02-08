@@ -260,7 +260,7 @@ public class CqueryTransitionResolver {
     TransitionFactory<RuleTransitionData> trimmingTransitionFactory =
         ((ConfiguredRuleClassProvider) ruleClassProvider).getTrimmingTransitionFactory();
 
-    boolean isAlias = rule.getAssociatedRule().getName().equals("alias");
+    boolean isAlias = "alias".equals(rule.getAssociatedRule().getName());
     if (trimmingTransitionFactory != null && !isAlias) {
       transitionFactory =
           ComposingTransitionFactory.of(transitionFactory, trimmingTransitionFactory);

@@ -40,7 +40,7 @@ public class WindowsSubprocessFactory implements SubprocessFactory {
     String argv0 = processArgv0(argv.get(0));
     String argvRest =
         argv.size() > 1
-            ? escapeArgvRest(argv.subList(1, argv.size()), argv0.equals("cmd.exe"))
+            ? escapeArgvRest(argv.subList(1, argv.size()), "cmd.exe".equals(argv0))
             : "";
     byte[] env = convertEnvToNative(builder.getEnv());
 

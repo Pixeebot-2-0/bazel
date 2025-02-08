@@ -223,7 +223,7 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
    * the individual target, derived from the 'output_to_bindir' attribute.
    */
   public boolean outputsToBindir() {
-    return ruleClass.getName().equals("genrule") // this is unfortunate...
+    return "genrule".equals(ruleClass.getName()) // this is unfortunate...
         ? NonconfigurableAttributeMapper.of(this).get("output_to_bindir", Type.BOOLEAN)
         : ruleClass.outputsToBindir();
   }
@@ -459,11 +459,11 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
   void setAttributeValue(Attribute attribute, Object value, boolean explicit) {
     checkState(!isFrozen(), "Already frozen: %s", this);
     String attrName = attribute.getName();
-    if (attrName.equals(NAME)) {
+    if (NAME.equals(attrName)) {
       // Avoid unnecessarily storing the name in attrValues - it's stored in the label.
       return;
     }
-    if (attrName.equals(GENERATOR_NAME)) {
+    if (GENERATOR_NAME.equals(attrName)) {
       String generatorName = (String) value;
       if (getName().startsWith(generatorName)) {
         generatorNamePrefixLength = generatorName.length();
@@ -487,7 +487,7 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
    */
   @Nullable
   public Object getAttr(String attrName) {
-    if (attrName.equals(NAME)) {
+    if (NAME.equals(attrName)) {
       return getName();
     }
     Integer attrIndex = ruleClass.getAttributeIndex(attrName);
@@ -501,7 +501,7 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
    */
   @Nullable
   public <T> Object getAttr(String attrName, Type<T> type) {
-    if (attrName.equals(NAME)) {
+    if (NAME.equals(attrName)) {
       checkAttrType(attrName, type, RuleClass.NAME_ATTRIBUTE);
       return getName();
     }
@@ -606,12 +606,12 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
    * with the given name.
    */
   public boolean isAttributeValueExplicitlySpecified(String attrName) {
-    if (attrName.equals(NAME)) {
+    if (NAME.equals(attrName)) {
       return true;
     }
-    if (attrName.equals(GENERATOR_FUNCTION)
-        || attrName.equals(GENERATOR_LOCATION)
-        || attrName.equals(GENERATOR_NAME)) {
+    if (GENERATOR_FUNCTION.equals(attrName)
+        || GENERATOR_LOCATION.equals(attrName)
+        || GENERATOR_NAME.equals(attrName)) {
       return wasCreatedByMacro();
     }
     Integer attrIndex = ruleClass.getAttributeIndex(attrName);
@@ -1006,7 +1006,7 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
                       outputLabel.getPackageFragment(),
                       outputLabel.getName()));
             }
-            if (outputLabel.getName().equals(".")) {
+            if (".".equals(outputLabel.getName())) {
               throw new LabelSyntaxException("output file name can't be equal '.'");
             }
           }
@@ -1093,14 +1093,14 @@ public class Rule implements Target, DependencyFilter.AttributeInfoProvider {
    */
   @Override
   public RuleVisibility getDefaultVisibility() {
-    if (ruleClass.getName().equals("bind")) {
+    if ("bind".equals(ruleClass.getName())) {
       return RuleVisibility.PUBLIC; // bind rules are always public.
     }
     // Temporary logic to relax config_setting's visibility enforcement while depot migrations set
     // visibility settings properly (legacy code may have visibility settings that would break if
     // enforced). See https://github.com/bazelbuild/bazel/issues/12669. Ultimately this entire
     // conditional should be removed.
-    if (ruleClass.getName().equals("config_setting")
+    if ("config_setting".equals(ruleClass.getName())
         && pkg.getConfigSettingVisibilityPolicy() == ConfigSettingVisibilityPolicy.DEFAULT_PUBLIC) {
       return RuleVisibility.PUBLIC; // Default: //visibility:public.
     }

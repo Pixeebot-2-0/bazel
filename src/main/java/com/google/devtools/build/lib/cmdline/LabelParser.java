@@ -142,7 +142,7 @@ final class LabelParser {
       final int colonIndex = rawLabel.indexOf(':', startOfPackage);
       final String rawPkg =
           rawLabel.substring(startOfPackage, colonIndex >= 0 ? colonIndex : rawLabel.length());
-      final boolean pkgEndsWithTripleDots = rawPkg.endsWith("/...") || rawPkg.equals("...");
+      final boolean pkgEndsWithTripleDots = rawPkg.endsWith("/...") || "...".equals(rawPkg);
       if (colonIndex < 0 && pkgEndsWithTripleDots) {
         // Special case: if the entire label ends in '...', the target name is empty.
         pkg = stripTrailingTripleDots(rawPkg);
@@ -169,7 +169,7 @@ final class LabelParser {
       if (pkg.endsWith("/...")) {
         return pkg.substring(0, pkg.length() - 4);
       }
-      if (pkg.equals("...")) {
+      if ("...".equals(pkg)) {
         return "";
       }
       return pkg;

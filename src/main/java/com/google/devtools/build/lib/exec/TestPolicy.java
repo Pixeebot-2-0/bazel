@@ -73,7 +73,7 @@ public class TestPolicy {
     for (Map.Entry<String, String> entry : envVariables.entrySet()) {
       String val = entry.getValue();
       if (val.contains("${")) {
-        if (val.equals(INHERITED)) {
+        if (INHERITED.equals(val)) {
           if (!clientEnv.containsKey(entry.getKey())) {
             continue;
           }

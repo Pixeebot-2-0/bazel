@@ -121,7 +121,7 @@ public class StarlarkRepositoryContext extends StarlarkBaseExternalContext {
     WorkspaceAttributeMapper attrs = WorkspaceAttributeMapper.of(rule);
     ImmutableMap.Builder<String, Object> attrBuilder = new ImmutableMap.Builder<>();
     for (String name : attrs.getAttributeNames()) {
-      if (!name.equals("$local")) {
+      if (!"$local".equals(name)) {
         // Attribute values should be type safe
         attrBuilder.put(
             Attribute.getStarlarkName(name), Attribute.valueToStarlark(attrs.getObject(name)));

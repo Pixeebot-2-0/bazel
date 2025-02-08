@@ -41,19 +41,19 @@ public final class FdoContext {
     }
 
     public boolean isAutoFdo() throws EvalException {
-      return getBranchFdoMode().equals("auto_fdo");
+      return "auto_fdo".equals(getBranchFdoMode());
     }
 
     public boolean isAutoXBinaryFdo() throws EvalException {
-      return getBranchFdoMode().equals("xbinary_fdo");
+      return "xbinary_fdo".equals(getBranchFdoMode());
     }
 
     public boolean isLlvmFdo() throws EvalException {
-      return getBranchFdoMode().equals("llvm_fdo");
+      return "llvm_fdo".equals(getBranchFdoMode());
     }
 
     public boolean isLlvmCSFdo() throws EvalException {
-      return getBranchFdoMode().equals("llvm_cs_fdo");
+      return "llvm_cs_fdo".equals(getBranchFdoMode());
     }
 
     @Nullable

@@ -34,7 +34,7 @@ public final class ExternalFileSystemLockHelper {
     }
     Path path = Path.of(args[0]).toAbsolutePath();
     Files.createDirectories(path.getParent());
-    boolean shared = args[1].equals("shared");
+    boolean shared = "shared".equals(args[1]);
     try (FileChannel channel =
             FileChannel.open(
                 path,

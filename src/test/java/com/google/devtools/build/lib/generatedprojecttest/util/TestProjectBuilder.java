@@ -90,10 +90,10 @@ public final class TestProjectBuilder {
     String fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
     String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
     if (extension.equals("bzl")
-        || fileName.equals("BUILD")
-        || fileName.equals("BUILD.bazel")
-        || fileName.equals("WORKSPACE")
-        || fileName.equals("WORKSPACE.bazel")) {
+        || "BUILD".equals(fileName)
+        || "BUILD.bazel".equals(fileName)
+        || "WORKSPACE".equals(fileName)
+        || "WORKSPACE.bazel".equals(fileName)) {
       return "# dummy";
     } else {
       return "dummy";

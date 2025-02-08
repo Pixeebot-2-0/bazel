@@ -382,7 +382,7 @@ public interface ModuleArg {
               "invalid argument '" + input + "': use _ for the empty version");
         }
         try {
-          Version version = versionStr.equals("_") ? Version.EMPTY : Version.parse(versionStr);
+          Version version = "_".equals(versionStr) ? Version.EMPTY : Version.parse(versionStr);
           return SpecificVersionOfModule.create(new ModuleKey(moduleName, version));
         } catch (ParseException e) {
           throw new OptionsParsingException("invalid argument '" + input + "': " + e.getMessage());

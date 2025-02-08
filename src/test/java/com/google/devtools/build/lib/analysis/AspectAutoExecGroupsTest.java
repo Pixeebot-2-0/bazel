@@ -184,7 +184,7 @@ public class AspectAutoExecGroupsTest extends BuildViewTestCase {
         "  " + action + "(",
         actionParameters,
         "    outputs = [output_jar],",
-        action.equals("ctx.actions.run")
+        "ctx.actions.run".equals(action)
             ? (actionParameters.contains("executable =") // avoid adding executable parameter twice
                 ? ""
                 : "executable = ctx.toolchains['//rule:toolchain_type_1'].tool,")
@@ -238,7 +238,7 @@ public class AspectAutoExecGroupsTest extends BuildViewTestCase {
         "  " + action + "(",
         actionParameters,
         "    outputs = [output_jar],",
-        action.equals("ctx.actions.run")
+        "ctx.actions.run".equals(action)
             ? "    executable = '//toolchain:foo_toolchain',"
             : "    command = 'echo',",
         "  )",
@@ -280,7 +280,7 @@ public class AspectAutoExecGroupsTest extends BuildViewTestCase {
         "  " + action + "(",
         actionParameters,
         "    outputs = [output_jar],",
-        action.equals("ctx.actions.run")
+        "ctx.actions.run".equals(action)
             ? "    executable = '//toolchain:foo_toolchain',"
             : "    command = 'echo',",
         "  )",

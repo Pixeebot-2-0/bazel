@@ -1428,8 +1428,8 @@ public class RewindingTestsHelper {
     recorder.setActionRewoundEventSubscriber(
         rewoundEvent -> {
           String progressMessage = rewoundEvent.getFailedRewoundAction().getProgressMessage();
-          if (progressMessage.equals(
-              "Copying A-shared.out to B-shared.out on behalf of shared_1")) {
+          if ("Copying A-shared.out to B-shared.out on behalf of shared_1".equals
+              (progressMessage)) {
             shared1BEmittedRewoundEvent.countDown();
             awaitUninterruptibly(shared2BDeclaresFutureDep);
           }
@@ -1825,7 +1825,7 @@ public class RewindingTestsHelper {
         ActionLookupData actionKey = (ActionLookupData) rewoundKeys.get(i);
         String actionLabel = actionKey.getLabel().getCanonicalForm();
         i++;
-        if (actionLabel.equals("//middle:tool")) {
+        if ("//middle:tool".equals(actionLabel)) {
           switch (actionKey.getActionIndex()) {
             case 0: // SymlinkAction
               break;
@@ -1853,7 +1853,7 @@ public class RewindingTestsHelper {
         ActionLookupData actionKey = (ActionLookupData) rewoundKeys.get(i);
         String actionLabel = actionKey.getLabel().getCanonicalForm();
         i++;
-        if (actionLabel.equals("//middle:tool")) {
+        if ("//middle:tool".equals(actionLabel)) {
           assertThat(actionKey.getActionIndex()).isEqualTo(0);
         } else {
           assertThat(expectedRewoundGenrules.remove(actionLabel)).isTrue();
@@ -1999,7 +1999,7 @@ public class RewindingTestsHelper {
         ActionLookupData actionKey = (ActionLookupData) rewoundKeys.get(i);
         String actionLabel = actionKey.getLabel().getCanonicalForm();
         i++;
-        if (actionLabel.equals("//test:tool")) {
+        if ("//test:tool".equals(actionLabel)) {
           switch (actionKey.getActionIndex()) {
             case 0: // SymlinkAction
               break;
@@ -2028,7 +2028,7 @@ public class RewindingTestsHelper {
         ActionLookupData actionKey = (ActionLookupData) rewoundKeys.get(i);
         String actionLabel = actionKey.getLabel().getCanonicalForm();
         i++;
-        if (actionLabel.equals("//test:tool")) {
+        if ("//test:tool".equals(actionLabel)) {
           assertThat(actionKey.getActionIndex()).isEqualTo(0);
         } else {
           assertThat(actionLabel).isEqualTo("//test:rule1");
@@ -2150,7 +2150,7 @@ public class RewindingTestsHelper {
         ActionLookupData actionKey = (ActionLookupData) rewoundKeys.get(i);
         String actionLabel = actionKey.getLabel().getCanonicalForm();
         i++;
-        if (actionLabel.equals("//middle:tool")) {
+        if ("//middle:tool".equals(actionLabel)) {
           switch (actionKey.getActionIndex()) {
             case 0: // SymlinkAction
               break;
@@ -2178,7 +2178,7 @@ public class RewindingTestsHelper {
         ActionLookupData actionKey = (ActionLookupData) rewoundKeys.get(i);
         String actionLabel = actionKey.getLabel().getCanonicalForm();
         i++;
-        if (actionLabel.equals("//middle:tool")) {
+        if ("//middle:tool".equals(actionLabel)) {
           assertThat(actionKey.getActionIndex()).isEqualTo(0);
         } else {
           assertThat(actionLabel).isEqualTo("//middle:gen_tree");

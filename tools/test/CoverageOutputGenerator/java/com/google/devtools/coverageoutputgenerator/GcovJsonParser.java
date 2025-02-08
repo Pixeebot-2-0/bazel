@@ -54,7 +54,7 @@ public class GcovJsonParser {
       }
       Gson gson = new Gson();
       GcovJsonFormat document = gson.fromJson(contents.toString(), GcovJsonFormat.class);
-      if (!document.format_version.equals("1")) {
+      if (!"1".equals(document.format_version)) {
         logger.log(
             Level.WARNING,
             "Expect GCov JSON format version 1, got format version " + document.format_version);

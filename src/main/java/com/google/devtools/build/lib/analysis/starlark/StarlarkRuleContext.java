@@ -212,7 +212,7 @@ public final class StarlarkRuleContext
     if (aspectDescriptor == null) {
       Collection<Attribute> attributes =
           rule.getAttributes().stream()
-              .filter(attribute -> !attribute.getName().equals("aspect_hints"))
+              .filter(attribute -> !"aspect_hints".equals(attribute.getName()))
               .collect(Collectors.toList());
 
       // Populate ctx.outputs.

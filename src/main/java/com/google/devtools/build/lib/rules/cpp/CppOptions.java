@@ -42,9 +42,9 @@ public class CppOptions extends FragmentOptions {
     @Override
     public List<CompilationMode> convert(String input) throws OptionsParsingException {
       ImmutableSet.Builder<CompilationMode> modes = ImmutableSet.builder();
-      if (input.equals("yes")) { // Special case: enable all modes.
+      if ("yes".equals(input)) { // Special case: enable all modes.
         modes.add(CompilationMode.values());
-      } else if (!input.equals("no")) { // "no" is another special case that disables all modes.
+      } else if (!"no".equals(input)) { // "no" is another special case that disables all modes.
         CompilationMode.Converter modeConverter = new CompilationMode.Converter();
         for (String mode : Splitter.on(',').split(input)) {
           modes.add(modeConverter.convert(mode, /* conversionContext= */ null));
@@ -82,10 +82,10 @@ public class CppOptions extends FragmentOptions {
     @Nullable
     @Override
     public Label convert(String input, Object conversionContext) throws OptionsParsingException {
-      if (input.equals(TARGET_LIBC_TOP_NOT_YET_SET)) {
+      if (TARGET_LIBC_TOP_NOT_YET_SET.equals(input)) {
         return Label.createUnvalidated(
             PackageIdentifier.EMPTY_PACKAGE_ID, TARGET_LIBC_TOP_NOT_YET_SET);
-      } else if (input.equals("default")) {
+      } else if ("default".equals(input)) {
         // This is needed for defining config_setting() values, the syntactic form
         // of which must be a String, to match absence of a --grte_top option.
         // "--grte_top=default" works on the command-line too,

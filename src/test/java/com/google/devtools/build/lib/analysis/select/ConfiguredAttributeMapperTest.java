@@ -140,7 +140,7 @@ public class ConfiguredAttributeMapperTest extends BuildViewTestCase {
       ConfiguredAttributeMapper mapper, List<Label> visitedLabels) {
     mapper.visitAllLabels(
         (attribute, label) -> {
-          if (label.getPackageIdentifier().getPackageFragment().toString().equals("a")) {
+          if ("a".equals(label.getPackageIdentifier().getPackageFragment().toString())) {
             visitedLabels.add(label);
           }
         });

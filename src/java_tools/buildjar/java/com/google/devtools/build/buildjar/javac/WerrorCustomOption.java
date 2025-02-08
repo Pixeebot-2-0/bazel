@@ -76,10 +76,10 @@ public class WerrorCustomOption {
       checkArgument(flag.startsWith(WERROR), flag);
       for (String arg : Splitter.on(',').split(flag.substring(WERROR.length()))) {
         // Warnings with a '+' or '-' have an implicit '+'.
-        if (arg.equals("+all") || arg.equals("all")) {
+        if ("+all".equals(arg) || "all".equals(arg)) {
           werrors.clear();
           werrors.put("all", true);
-        } else if (arg.equals("-all") || arg.equals("none")) {
+        } else if ("-all".equals(arg) || "none".equals(arg)) {
           werrors.clear();
           werrors.put("none", true);
           for (String errorWarning : warningsAsErrorsDefault) {

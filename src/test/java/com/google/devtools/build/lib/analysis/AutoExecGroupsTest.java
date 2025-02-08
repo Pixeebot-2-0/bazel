@@ -230,7 +230,7 @@ public class AutoExecGroupsTest extends BuildViewTestCase {
         "  " + action + "(",
         actionParameters,
         "    outputs = [output_jar],",
-        action.equals("ctx.actions.run")
+        "ctx.actions.run".equals(action)
             ? (actionParameters.contains("executable =") // avoid adding executable parameter twice
                 ? ""
                 : "executable = ctx.toolchains['//rule:toolchain_type_1'].tool,")
@@ -1030,7 +1030,7 @@ public class AutoExecGroupsTest extends BuildViewTestCase {
   public void toolchainNotDefinedButUsedInAction(String action) throws Exception {
     createCustomRule(
         /* action= */ action,
-        /* actionParameters= */ (action.equals("ctx.actions.run")
+        /* actionParameters= */ ("ctx.actions.run".equals(action)
                 ? "executable = ctx.executable._tool, "
                 : "")
             + "toolchain = '//rule:toolchain_type_1',",
@@ -1089,7 +1089,7 @@ public class AutoExecGroupsTest extends BuildViewTestCase {
             + "      toolchains = ['//rule:toolchain_type_1'],\n"
             + "    ),\n";
     String executable =
-        action.equals("ctx.actions.run") ? "executable = ctx.executable._tool," : "";
+        "ctx.actions.run".equals(action) ? "executable = ctx.executable._tool," : "";
     String execCompatibleWith = "  exec_compatible_with = ['//platforms:constraint_1'],";
     createCustomRule(
         /* action= */ action,
@@ -1171,7 +1171,7 @@ public class AutoExecGroupsTest extends BuildViewTestCase {
         /* action= */ action,
         /* actionParameters= */ "toolchain = '//rule:toolchain_type_2', "
             + "exec_group = 'custom_exec_group',"
-            + (action.equals("ctx.actions.run")
+            + ("ctx.actions.run".equals(action)
                 ? "executable = ctx.toolchains['//rule:toolchain_type_2'].tool, "
                 : ""),
         /* extraAttributes= */ "",

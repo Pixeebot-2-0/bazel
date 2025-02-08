@@ -874,7 +874,7 @@ public class ObjcLibraryTest extends ObjcRuleTestCase {
         .write();
     int timesDefinesAppear = 0;
     for (String arg : compileAction("//lib:lib", "a.o").getArguments()) {
-      if (arg.equals("-Dfoo=bar")) {
+      if ("-Dfoo=bar".equals(arg)) {
         timesDefinesAppear++;
       }
     }

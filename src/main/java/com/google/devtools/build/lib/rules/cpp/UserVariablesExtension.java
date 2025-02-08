@@ -50,7 +50,7 @@ public class UserVariablesExtension implements VariablesExtension {
         if (depset.isEmpty()) {
           continue;
         }
-        if (!depset.getElementType().toString().equals("string")) {
+        if (!"string".equals(depset.getElementType().toString())) {
           throw new EvalException(
               "Trying to build UserVariableExtension, found non-string type in depset.");
         }

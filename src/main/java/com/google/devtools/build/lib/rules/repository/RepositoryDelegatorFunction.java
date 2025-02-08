@@ -593,7 +593,7 @@ public final class RepositoryDelegatorFunction implements SkyFunction {
   @Nullable
   @VisibleForTesting
   static String unescape(String str) {
-    if (str.equals("\\0")) {
+    if ("\\0".equals(str)) {
       return null; // \0 == null string
     }
     StringBuilder result = new StringBuilder();

@@ -104,7 +104,7 @@ public abstract class JavaToolchainTool {
     CustomCommandLine.Builder command = CustomCommandLine.builder();
 
     Artifact executable = tool().getExecutable();
-    if (!executable.getExtension().equals("jar")) {
+    if (!"jar".equals(executable.getExtension())) {
       command = command.addExecPath(executable).addAll(jvmOpts());
     } else {
       command
@@ -126,7 +126,7 @@ public abstract class JavaToolchainTool {
     // The runfiles of the tool are not added. If this is desired, add getFilesToRun() to inputs
     // instead.
     inputs.add(executable);
-    if (executable.getExtension().equals("jar")) {
+    if ("jar".equals(executable.getExtension())) {
       inputs.addTransitive(toolchain.getJavaRuntime().javaBaseInputs());
     }
   }

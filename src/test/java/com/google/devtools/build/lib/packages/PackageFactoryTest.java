@@ -516,7 +516,7 @@ public final class PackageFactoryTest extends PackageLoadingTestCase {
           @Override
           public void validate(Package pkg2, ExtendedEventHandler eventHandler)
               throws InvalidPackageException {
-            if (pkg2.getName().equals("x")) {
+            if ("x".equals(pkg2.getName())) {
               eventHandler.handle(Event.warn("warning event"));
               throw new InvalidPackageException(pkg2.getPackageIdentifier(), "nope");
             }

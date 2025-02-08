@@ -509,7 +509,7 @@ public abstract class OutputGroupInfo extends StructImpl
 
     @Override
     public NestedSet<Artifact> getOutputGroup(String name) {
-      if (name.equals(HIDDEN_TOP_LEVEL)) {
+      if (HIDDEN_TOP_LEVEL.equals(name)) {
         return hiddenTopLevelFiles;
       }
       if (name.equals(otherGroup)) {
@@ -520,7 +520,7 @@ public abstract class OutputGroupInfo extends StructImpl
 
     @Override
     boolean containsKey(String name) {
-      return name.equals(HIDDEN_TOP_LEVEL) || name.equals(otherGroup);
+      return HIDDEN_TOP_LEVEL.equals(name) || name.equals(otherGroup);
     }
 
     @Override

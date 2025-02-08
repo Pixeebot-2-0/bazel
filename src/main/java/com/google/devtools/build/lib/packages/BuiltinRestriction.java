@@ -95,7 +95,7 @@ public final class BuiltinRestriction {
    */
   public static void failIfCalledOutsideBuiltins(StarlarkThread thread) throws EvalException {
     Label currentFile = BazelModuleContext.ofInnermostBzlOrThrow(thread).label();
-    if (!currentFile.getRepository().getName().equals("_builtins")) {
+    if (!"_builtins".equals(currentFile.getRepository().getName())) {
       throw Starlark.errorf(
           "file '%s' cannot use private @_builtins API", currentFile.getCanonicalForm());
     }
@@ -181,7 +181,7 @@ public final class BuiltinRestriction {
    */
   public static boolean isNotAllowed(
       Label label, RepositoryMapping repoMapping, Collection<AllowlistEntry> allowlist) {
-    if (label.getRepository().getName().equals("_builtins")) {
+    if ("_builtins".equals(label.getRepository().getName())) {
       return false;
     }
     return allowlist.stream().noneMatch(e -> e.allows(label, repoMapping));

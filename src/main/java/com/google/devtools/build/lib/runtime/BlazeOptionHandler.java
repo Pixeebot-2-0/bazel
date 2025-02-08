@@ -201,7 +201,7 @@ public final class BlazeOptionHandler {
         if (!rcArgs.getArgs().isEmpty()) {
           String inherited = commandToParse.equals(commandAnnotation.name()) ? "" : "Inherited ";
           String source =
-              rcArgs.getRcFile().equals("client")
+              "client".equals(rcArgs.getRcFile())
                   ? "Options provided by the client"
                   : String.format(
                       "Reading rc options for '%s' from %s",
@@ -211,7 +211,7 @@ public final class BlazeOptionHandler {
                   "%s:\n  %s'%s' options: %s",
                   source, inherited, commandToParse, Joiner.on(' ').join(rcArgs.getArgs())));
         }
-        if (commandToParse.equals(COMMON_PSEUDO_COMMAND)) {
+        if (COMMON_PSEUDO_COMMAND.equals(commandToParse)) {
           // Pass in options data for all commands supported by the runtime so that options that
           // apply to some but not the current command can be ignored.
           //
@@ -616,8 +616,8 @@ public final class BlazeOptionHandler {
         command = command.substring(0, index);
       }
       if (!validCommands.contains(command)
-          && !command.equals(ALWAYS_PSEUDO_COMMAND)
-          && !command.equals(COMMON_PSEUDO_COMMAND)) {
+          && !ALWAYS_PSEUDO_COMMAND.equals(command)
+          && !COMMON_PSEUDO_COMMAND.equals(command)) {
         eventHandler.handle(
             Event.warn(
                 "while reading option defaults file '"
@@ -676,7 +676,7 @@ public final class BlazeOptionHandler {
       String option = cmdLineIterator.next();
       if (option.startsWith("--rc_source=") || option.startsWith("--default_override=")) {
         defaultOverridesAndRcSources.add(option);
-      } else if (option.equals("--rc_source") || option.equals("--default_override")) {
+      } else if ("--rc_source".equals(option) || "--default_override".equals(option)) {
         Optional<String> possibleArgument =
             cmdLineIterator.hasNext() ? Optional.of(cmdLineIterator.next()) : Optional.empty();
         defaultOverridesAndRcSources.add(option);

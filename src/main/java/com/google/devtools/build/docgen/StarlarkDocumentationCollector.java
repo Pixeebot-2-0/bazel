@@ -225,7 +225,7 @@ final class StarlarkDocumentationCollector {
       StarlarkDocExpander expander) {
     GlobalMethods globalMethods = clazz.getAnnotation(GlobalMethods.class);
 
-    if (globalMethods == null && !clazz.getName().equals("net.starlark.java.eval.MethodLibrary")) {
+    if (globalMethods == null && !"net.starlark.java.eval.MethodLibrary".equals(clazz.getName())) {
       return;
     }
 

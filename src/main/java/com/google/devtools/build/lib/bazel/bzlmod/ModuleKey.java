@@ -130,11 +130,11 @@ public record ModuleKey(String name, Version version) {
   }
 
   public static ModuleKey fromString(String s) throws Version.ParseException {
-    if (s.equals("<root>")) {
+    if ("<root>".equals(s)) {
       return ModuleKey.ROOT;
     }
     List<String> parts = Splitter.on('@').splitToList(s);
-    if (parts.get(1).equals("_")) {
+    if ("_".equals(parts.get(1))) {
       return new ModuleKey(parts.get(0), Version.EMPTY);
     }
 

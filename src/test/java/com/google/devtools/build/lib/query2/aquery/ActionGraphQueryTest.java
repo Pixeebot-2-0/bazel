@@ -78,7 +78,7 @@ public class ActionGraphQueryTest extends PostAnalysisQueryTest<ConfiguredTarget
 
     Iterator<ConfiguredTargetValue> resultIterator = result.iterator();
     ConfiguredTargetValue first = resultIterator.next();
-    if (first.getConfiguredTarget().getLabel().toString().equals("//test:foo.java")) {
+    if ("//test:foo.java".equals(first.getConfiguredTarget().getLabel().toString())) {
       assertThat(getConfiguration(first)).isNull();
       assertThat(getConfiguration(resultIterator.next())).isNotNull();
     } else {

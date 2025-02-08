@@ -52,7 +52,7 @@ public final class ToolchainContextUtil {
     var defaultExecConstraintLabels = getExecutionPlatformConstraints(rule, platformConfig);
     ImmutableSet<ToolchainTypeRequirement> toolchainTypes = ruleClass.getToolchainTypes();
 
-    if (!ruleClass.isStarlark() && ruleClass.getName().equals("genrule")) {
+    if (!ruleClass.isStarlark() && "genrule".equals(ruleClass.getName())) {
       // Override the toolchain types based on the target-level "toolchains" attribute.
       toolchainTypes = updateToolchainTypesFromAttribute(rule, toolchainTypes);
     }

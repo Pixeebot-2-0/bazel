@@ -126,7 +126,7 @@ public class RawAttributeMapper extends AbstractAttributeMapper {
     // This special case for the visibility attribute is needed because its value is replaced
     // with an empty list during package loading if it is public or private in order not to visit
     // the package called 'visibility'.
-    if (attr.getName().equals("visibility")) {
+    if ("visibility".equals(attr.getName())) {
       return rule.getVisibilityDeclaredLabels();
     }
 

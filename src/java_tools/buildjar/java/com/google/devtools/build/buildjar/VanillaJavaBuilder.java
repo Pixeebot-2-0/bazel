@@ -83,7 +83,7 @@ public class VanillaJavaBuilder implements Closeable {
   }
 
   public static void main(String[] args) throws IOException {
-    if (args.length == 1 && args[0].equals("--persistent_worker")) {
+    if (args.length == 1 && "--persistent_worker".equals(args[0])) {
       System.exit(runPersistentWorker());
     } else {
       try (VanillaJavaBuilder builder = new VanillaJavaBuilder()) {
@@ -214,7 +214,7 @@ public class VanillaJavaBuilder implements Closeable {
       String code = diagnostic.getCode();
       if (code.startsWith("compiler.note.deprecated")
           || code.startsWith("compiler.note.unchecked")
-          || code.equals("compiler.warn.sun.proprietary")) {
+          || "compiler.warn.sun.proprietary".equals(code)) {
         continue;
       }
       StringBuilder message = new StringBuilder();

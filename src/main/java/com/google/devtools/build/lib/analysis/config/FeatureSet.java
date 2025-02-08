@@ -50,7 +50,7 @@ public record FeatureSet(ImmutableSet<String> on, ImmutableSet<String> off) {
     for (String feature : features) {
       if (feature.startsWith("-")) {
         featureToState.put(feature.substring(1), false);
-      } else if (feature.equals("no_layering_check")) {
+      } else if ("no_layering_check".equals(feature)) {
         // TODO(bazel-team): Remove once we do not have BUILD files left that contain
         // 'no_layering_check'.
         featureToState.put("layering_check", false);

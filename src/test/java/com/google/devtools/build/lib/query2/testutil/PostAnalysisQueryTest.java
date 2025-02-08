@@ -631,8 +631,8 @@ my_rule = rule(
                         new Attribute.ComputedDefault("conspiracy") {
                           @Override
                           public Object getDefault(AttributeMap rule) {
-                            return rule.get("conspiracy", Type.STRING)
-                                    .equals("space jam was a documentary")
+                            return "space jam was a documentary"
+                                    .equals(rule.get("conspiracy", Type.STRING))
                                 ? Label.parseCanonicalUnchecked("//test:foo")
                                 : null;
                           }

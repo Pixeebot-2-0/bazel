@@ -452,7 +452,7 @@ public class StarlarkDocumentationTest {
 
     boolean foundGlobalLibrary = false;
     for (StarlarkMethodDoc methodDoc : topLevel.getMethods()) {
-      if (methodDoc.getName().equals("MockGlobalCallable")) {
+      if ("MockGlobalCallable".equals(methodDoc.getName())) {
         assertThat(methodDoc.getDocumentation()).isEqualTo("GlobalCallable documentation");
         assertThat(methodDoc.getSignature())
             .isEqualTo(

@@ -119,7 +119,7 @@ public interface OsPathPolicy {
             ++shift;
             break;
           case "..":
-            if (segmentCount > 0 && !segments[segmentCount - 1].equals("..")) {
+            if (segmentCount > 0 && !"..".equals(segments[segmentCount - 1])) {
               // Remove the last segment, if there is one and it is not "..". This
               // means that the resulting path can still contain ".."
               // segments at the beginning.

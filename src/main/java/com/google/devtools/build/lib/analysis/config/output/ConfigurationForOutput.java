@@ -213,7 +213,7 @@ public class ConfigurationForOutput {
         // we include it in the user-defined fragment for clarity. See getOrderedUserDefinedOptions.
         .filter(
             entry ->
-                !(options.getClass().equals(CoreOptions.class) && entry.getKey().equals("define")))
+                !(options.getClass().equals(CoreOptions.class) && "define".equals(entry.getKey())))
         .collect(
             toImmutableSortedMap(
                 Ordering.natural(), Map.Entry::getKey, e -> String.valueOf(e.getValue())));

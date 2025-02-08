@@ -1595,10 +1595,10 @@ public final class StarlarkAspectsToolchainPropagationTest extends AnalysisTestC
             .filter(
                 entry ->
                     entry.getKey() instanceof AspectKey
-                        && ((AspectKey) entry.getKey())
+                        && "//test:defs.bzl%toolchain_aspect"
+                            .equals(((AspectKey) entry.getKey())
                             .getAspectClass()
-                            .getName()
-                            .equals("//test:defs.bzl%toolchain_aspect"))
+                            .getName()))
             .collect(toImmutableList());
     assertThat(nodes).hasSize(1);
 
@@ -1654,10 +1654,10 @@ public final class StarlarkAspectsToolchainPropagationTest extends AnalysisTestC
             .filter(
                 entry ->
                     entry.getKey() instanceof AspectKey
-                        && ((AspectKey) entry.getKey())
+                        && "//test:defs.bzl%toolchain_aspect"
+                            .equals(((AspectKey) entry.getKey())
                             .getAspectClass()
-                            .getName()
-                            .equals("//test:defs.bzl%toolchain_aspect"))
+                            .getName()))
             .map(e -> ((AspectKey) e.getKey()).getLabel().toString())
             .collect(toImmutableList());
 
@@ -1779,10 +1779,10 @@ public final class StarlarkAspectsToolchainPropagationTest extends AnalysisTestC
             .filter(
                 entry ->
                     entry.getKey() instanceof AspectKey
-                        && ((AspectKey) entry.getKey())
+                        && "//test:defs.bzl%toolchain_aspect"
+                            .equals(((AspectKey) entry.getKey())
                             .getAspectClass()
-                            .getName()
-                            .equals("//test:defs.bzl%toolchain_aspect"))
+                            .getName()))
             .map(e -> (ConfiguredAspect) e.getValue())
             .map(a -> ((StarlarkInfo) a.get(providerKey)).getValue("val"))
             .map(v -> (String) v)

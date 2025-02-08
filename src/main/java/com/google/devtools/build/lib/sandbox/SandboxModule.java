@@ -407,7 +407,7 @@ public final class SandboxModule extends BlazeModule {
       pathElement = new File(pathElement).getAbsolutePath();
       try {
         for (Path dentry : fs.getPath(pathElement).getDirectoryEntries()) {
-          if (dentry.getBaseName().replace(".exe", "").equals("docker")) {
+          if ("docker".equals(dentry.getBaseName().replace(".exe", ""))) {
             return dentry;
           }
         }

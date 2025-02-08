@@ -1751,7 +1751,7 @@ Label("//conditions:default"): None})\
       StringBuilder fakeMandatoryArgs = new StringBuilder();
       for (Attribute attr : ruleClass.getAttributes()) {
         String fakeValue = null;
-        if (attr.isPublic() && attr.isMandatory() && !attr.getName().equals("name")) {
+        if (attr.isPublic() && attr.isMandatory() && !"name".equals(attr.getName())) {
           Type<?> type = attr.getType();
           if (type.equals(Type.STRING)
               || type.equals(BuildType.OUTPUT)

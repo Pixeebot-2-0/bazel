@@ -223,7 +223,7 @@ public class EnvironmentGroup implements Target {
               prefix + "environment " + envName + " does not exist",
               Code.ENVIRONMENT_DOES_NOT_EXIST));
       return false;
-    } else if (!env.getTargetKind().equals("environment rule")) {
+    } else if (!"environment rule".equals(env.getTargetKind())) {
       events.add(
           Package.error(
               location,

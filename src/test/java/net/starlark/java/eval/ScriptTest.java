@@ -231,7 +231,7 @@ public final class ScriptTest {
         // TODO(b/376078033): remove special set.star handling once Starlark sets are enabled by
         // default.
         StarlarkSemantics semantics =
-            name.equals("set.star")
+            "set.star".equals(name)
                 ? StarlarkSemantics.builder()
                     .setBool(StarlarkSemantics.EXPERIMENTAL_ENABLE_STARLARK_SET, true)
                     .build()

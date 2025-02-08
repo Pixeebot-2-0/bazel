@@ -112,7 +112,7 @@ public final class SymlinkTreeAction extends AbstractAction {
         owner,
         computeInputs(runfileSymlinksMode, runfiles, inputManifest, repoMappingManifest),
         ImmutableSet.of(outputManifest));
-    checkArgument(outputManifest.getExecPath().getBaseName().equals("MANIFEST"), outputManifest);
+    checkArgument("MANIFEST".equals(outputManifest.getExecPath().getBaseName()), outputManifest);
     this.outputManifest = outputManifest;
     this.env = env;
     this.runfileSymlinksMode = runfileSymlinksMode;

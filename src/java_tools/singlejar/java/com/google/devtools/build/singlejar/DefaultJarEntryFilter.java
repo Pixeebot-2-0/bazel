@@ -90,16 +90,16 @@ public class DefaultJarEntryFilter implements ZipEntryFilter {
   public void accept(String filename, StrategyCallback callback) throws IOException {
     if (!allowedPaths.allowed(filename)) {
       callback.skip();
-    } else if (filename.equals(SPRING_HANDLERS)) {
+    } else if (SPRING_HANDLERS.equals(filename)) {
       callback.customMerge(date, new ConcatenateStrategy());
-    } else if (filename.equals(SPRING_SCHEMAS)) {
+    } else if (SPRING_SCHEMAS.equals(filename)) {
       callback.customMerge(date, new ConcatenateStrategy());
-    } else if (filename.equals(REFERENCE_CONF)) {
+    } else if (REFERENCE_CONF.equals(filename)) {
       callback.customMerge(date, new ConcatenateStrategy());
     } else if (filename.startsWith(SERVICES_DIR)) {
       // Merge all services files.
       callback.customMerge(date, new ConcatenateStrategy());
-    } else if (filename.equals(MANIFEST_NAME) || filename.endsWith(".SF")
+    } else if (MANIFEST_NAME.equals(filename) || filename.endsWith(".SF")
         || filename.endsWith(".DSA") || filename.endsWith(".RSA")) {
       // Ignore existing manifests and any .SF, .DSA or .RSA jar signing files.
       // TODO(bazel-team): I think we should be stricter and only skip signing
@@ -111,7 +111,7 @@ public class DefaultJarEntryFilter implements ZipEntryFilter {
       // than the source file. Since we normalize the timestamps, we need to provide timestamps for
       // class files that are newer than those for the corresponding source files.
       callback.copy(classDate);
-    } else if (filename.equals(PROTOBUF_META)) {
+    } else if (PROTOBUF_META.equals(filename)) {
       // Merge all protobuf meta data without inserting newlines,
       // since the file is in protobuf binary format.
       callback.customMerge(date, new ConcatenateStrategy(false));

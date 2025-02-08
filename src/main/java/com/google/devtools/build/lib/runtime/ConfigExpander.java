@@ -253,7 +253,7 @@ final class ConfigExpander {
                   commandToParse.equals(BlazeOptionHandler.COMMON_PSEUDO_COMMAND)
                       ? fallbackData
                       : null));
-          if (arg.length() >= 8 && arg.substring(0, 8).equals("--config")) {
+          if (arg.length() >= 8 && "--config".equals(arg.substring(0, 8))) {
             // We have a config. Because we don't want to worry about formatting,
             // we will only accept --config=value, and will not accept value on a following line.
             int charOfConfigValue = arg.indexOf('=');

@@ -551,9 +551,9 @@ public class BuildEventStreamer {
     if (event instanceof BuildStartingEvent buildStartingEvent) {
       BuildRequest buildRequest = buildStartingEvent.request();
       isCommandToSkipBuildCompleteEvent =
-          buildRequest.getCommandName().equals("test")
-              || buildRequest.getCommandName().equals("coverage")
-              || buildRequest.getCommandName().equals("run");
+          "test".equals(buildRequest.getCommandName())
+              || "coverage".equals(buildRequest.getCommandName())
+              || "run".equals(buildRequest.getCommandName());
     }
 
     if (event instanceof BuildEventWithConfiguration buildEventWithConfiguration) {

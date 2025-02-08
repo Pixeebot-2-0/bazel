@@ -391,9 +391,9 @@ public abstract class FileSystem {
       dir = PathFragment.createAlreadyNormalized(linkTarget.getDriveStr());
     }
     for (String name : linkTarget.segments()) {
-      if (name.equals(".") || name.isEmpty()) {
+      if (".".equals(name) || name.isEmpty()) {
         // no-op
-      } else if (name.equals("..")) {
+      } else if ("..".equals(name)) {
         PathFragment parent = dir.getParentDirectory();
         // root's parent is root, when canonicalizing, so this is a no-op.
         if (parent != null) { dir = parent; }

@@ -965,7 +965,7 @@ public class Package {
         id.equals(LabelConstants.EXTERNAL_PACKAGE_IDENTIFIER)
             // For bzlmod packages, setWorkspaceName() is not called, so this expression doesn't
             // change during package evaluation.
-            || workspaceName.equals(DUMMY_WORKSPACE_NAME_FOR_BZLMOD_PACKAGES);
+            || DUMMY_WORKSPACE_NAME_FOR_BZLMOD_PACKAGES.equals(workspaceName);
 
     return new Builder(
         new Metadata(

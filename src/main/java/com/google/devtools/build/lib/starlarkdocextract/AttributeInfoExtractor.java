@@ -108,7 +108,7 @@ public final class AttributeInfoExtractor {
         || type.equals(BuildType.DORMANT_LABEL)) {
       return AttributeType.LABEL;
     } else if (type.equals(Type.STRING) || type.equals(Type.STRING_NO_INTERN)) {
-      if (attributePublicName.equals("name")) {
+      if ("name".equals(attributePublicName)) {
         return AttributeType.NAME;
       } else {
         return AttributeType.STRING;

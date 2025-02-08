@@ -196,7 +196,7 @@ public final class SyncCommand implements BlazeCommand {
       // take all Starlark workspace rules and get their values
       ImmutableSet.Builder<SkyKey> repositoriesToFetch = new ImmutableSet.Builder<>();
       for (Rule rule : fileValue.getPackage().getTargets(Rule.class)) {
-        if (rule.getRuleClass().equals("bind")) {
+        if ("bind".equals(rule.getRuleClass())) {
           // The bind rule is special in that the name is not that of an external repository.
           // Moreover, it is not affected by the invalidation mechanism as there is nothing to
           // fetch anyway. So the only task remaining is to record the use of "bind" for whoever

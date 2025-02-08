@@ -240,7 +240,7 @@ public class PackageFunctionTest extends BuildViewTestCase {
     doAnswer(
             inv -> {
               Package pkg = inv.getArgument(0, Package.class);
-              if (pkg.getName().equals("pkg")) {
+              if ("pkg".equals(pkg.getName())) {
                 inv.getArgument(1, ExtendedEventHandler.class).handle(Event.warn("warning event"));
                 throw new InvalidPackageException(pkg.getPackageIdentifier(), "no good");
               }

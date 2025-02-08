@@ -79,7 +79,7 @@ public class ComparingTransition implements PatchTransition {
       throws InterruptedException {
     Map.Entry<String, BuildOptions> activeOptions =
         Iterables.getOnlyElement(activeTransition.apply(buildOptions, eventHandler).entrySet());
-    if (activeOptions.getKey().equals("error")) {
+    if ("error".equals(activeOptions.getKey())) {
       eventHandler.handle(Event.error(activeTransitionDesc + " transition failed"));
     } else if (runBoth.test(buildOptions.underlying())) {
       compare(
@@ -158,10 +158,10 @@ public class ComparingTransition implements PatchTransition {
       String option = combined.getKey();
       String activeVal = combined.getValue().getFirst();
       String altVal = combined.getValue().getSecond();
-      if (activeVal.equals("DOES NOT EXIST")) {
+      if ("DOES NOT EXIST".equals(activeVal)) {
         s2.add(String.format("   only in %s mode: --%s=%s", altTransitionDesc, option, altVal));
         diffs++;
-      } else if (altVal.equals("DOES NOT EXIST")) {
+      } else if ("DOES NOT EXIST".equals(altVal)) {
         s2.add(
             String.format("   only in %s mode: --%s=%s", activeTransitionDesc, option, activeVal));
         diffs++;
@@ -193,21 +193,21 @@ public class ComparingTransition implements PatchTransition {
     var ans = ImmutableMap.<String, String>builder();
     for (FragmentOptions f : o.getNativeOptions()) {
       for (Map.Entry<String, Object> op : f.asMap().entrySet()) {
-        if (op.getKey().equals("define")) {
+        if ("define".equals(op.getKey())) {
           ans.putAll(
               serializeUserDefinedOption(
                   o.get(CoreOptions.class).commandLineBuildVariables.stream()
                       .map(d -> Map.entry(d.getKey(), d.getValue()))
                       .collect(toImmutableList()),
                   "define"));
-        } else if (op.getKey().equals("features")) {
+        } else if ("features".equals(op.getKey())) {
           ans.putAll(
               serializeUserDefinedOption(
                   o.get(CoreOptions.class).defaultFeatures.stream()
                       .map(d -> Map.entry(d, ""))
                       .collect(toImmutableList()),
                   "feature"));
-        } else if (op.getKey().equals("host_features")) {
+        } else if ("host_features".equals(op.getKey())) {
           ans.putAll(
               serializeUserDefinedOption(
                   o.get(CoreOptions.class).hostFeatures.stream()

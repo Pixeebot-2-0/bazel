@@ -133,7 +133,7 @@ public final class GlobFunctionWithMultipleRecursiveFunctions extends GlobFuncti
     DirectoryListingValue listingValue = null;
 
     boolean patternHeadContainsGlobs = containsGlobs(patternHead);
-    boolean patternHeadIsStarStar = patternHead.equals("**");
+    boolean patternHeadIsStarStar = "**".equals(patternHead);
     if (patternHeadIsStarStar) {
       // "**" also matches an empty segment, so try the case where it is not present.
       if (globMatchesBareFile) {

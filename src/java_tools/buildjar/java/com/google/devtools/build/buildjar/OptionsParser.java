@@ -218,7 +218,7 @@ public final class OptionsParser {
     Iterator<String> it = javacOpts.iterator();
     while (it.hasNext()) {
       String curr = it.next();
-      if (curr.equals("-sourcepath") && it.hasNext()) {
+      if ("-sourcepath".equals(curr) && it.hasNext()) {
         it.remove();
         Iterables.addAll(sourcePath, CLASSPATH_SPLITTER.split(it.next()));
         it.remove();

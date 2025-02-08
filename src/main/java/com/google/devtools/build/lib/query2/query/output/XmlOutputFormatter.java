@@ -221,7 +221,7 @@ class XmlOutputFormatter extends AbstractUnorderedFormatter {
           "generating-rule", labelPrinter.toString(outputFile.getGeneratingRule().getLabel()));
     } else if (target instanceof InputFile inputFile) {
       elem = doc.createElement("source-file");
-      if (inputFile.getName().equals("BUILD")) {
+      if ("BUILD".equals(inputFile.getName())) {
         addStarlarkFilesToElement(doc, elem, inputFile, labelPrinter);
         addFeaturesToElement(doc, elem, inputFile);
         elem.setAttribute("package_contains_errors",

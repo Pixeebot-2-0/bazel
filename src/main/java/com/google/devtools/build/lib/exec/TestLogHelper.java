@@ -111,7 +111,7 @@ public class TestLogHelper {
       } else if (b == NEWLINE) {
         String line = lineBuilder.toString();
         lineBuilder = new StringBuilder();
-        if (line.equals(TestLogHelper.HEADER_DELIMITER)
+        if (TestLogHelper.HEADER_DELIMITER.equals(line)
             ||
             // On Windows, the line break could be \r\n, we want this case to work as well.
             (OS.getCurrent() == OS.WINDOWS && line.equals(TestLogHelper.HEADER_DELIMITER + "\r"))) {

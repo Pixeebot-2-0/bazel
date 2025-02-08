@@ -101,7 +101,7 @@ public class WorkspaceFileFunction implements SkyFunction {
       throws WorkspaceFileFunctionException, InterruptedException {
     WorkspaceFileKey key = (WorkspaceFileKey) skyKey.argument();
 
-    if (key.getIndex() == 0 && directories.getProductName().equals("bazel")) {
+    if (key.getIndex() == 0 && "bazel".equals(directories.getProductName())) {
       env.getListener()
           .handle(
               Event.warn(

@@ -379,7 +379,7 @@ public class BlazeCommandDispatcher implements CommandDispatcher {
       tracerEnabled = true;
     } else if (commonOptions.enableTracer == TriState.AUTO) {
       boolean commandSupportsProfile =
-          commandName.equals("query") || commandAnnotation.buildPhase().analyzes();
+          "query".equals(commandName) || commandAnnotation.buildPhase().analyzes();
       tracerEnabled = commandSupportsProfile || commonOptions.profilePath != null;
     }
 
@@ -671,7 +671,7 @@ public class BlazeCommandDispatcher implements CommandDispatcher {
       BuildEventProtocolOptions bepOptions =
           env.getOptions().getOptions(BuildEventProtocolOptions.class);
       OriginalUnstructuredCommandLineEvent unstructuredServerCommandLineEvent;
-      if (commandName.equals("run") && !bepOptions.includeResidueInRunBepEvent) {
+      if ("run".equals(commandName) && !bepOptions.includeResidueInRunBepEvent) {
         unstructuredServerCommandLineEvent =
             OriginalUnstructuredCommandLineEvent.REDACTED_UNSTRUCTURED_COMMAND_LINE_EVENT;
       } else {

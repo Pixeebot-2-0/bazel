@@ -175,7 +175,7 @@ public final class Spawns {
   public static boolean shouldPrefetchInputsForLocalExecution(Spawn spawn) {
     String disablePrefetchRequest =
         spawn.getExecutionInfo().get(ExecutionRequirements.DISABLE_LOCAL_PREFETCH);
-    return (disablePrefetchRequest == null) || disablePrefetchRequest.equals("0");
+    return (disablePrefetchRequest == null) || "0".equals(disablePrefetchRequest);
   }
 
   /**

@@ -226,7 +226,7 @@ public class IncompatibleTargetChecker {
     Target target = targetAndConfiguration.getTarget();
     Rule rule = target.getAssociatedRule();
 
-    if (rule == null || rule.getRuleClass().equals("toolchain")) {
+    if (rule == null || "toolchain".equals(rule.getRuleClass())) {
       return Optional.empty();
     }
 

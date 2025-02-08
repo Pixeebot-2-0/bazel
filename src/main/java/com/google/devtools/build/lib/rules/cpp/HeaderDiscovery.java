@@ -194,7 +194,7 @@ final class HeaderDiscovery {
           inputs.add(artifact);
         }
         continue;
-      } else if (execPathFragment.getFileExtension().equals("cppmap")) {
+      } else if ("cppmap".equals(execPathFragment.getFileExtension())) {
         // Transitive cppmap files are added to the dotd files of compiles even
         // though they are not required for compilation. Since they're not
         // explicit inputs to the action this only happens when sandboxing is

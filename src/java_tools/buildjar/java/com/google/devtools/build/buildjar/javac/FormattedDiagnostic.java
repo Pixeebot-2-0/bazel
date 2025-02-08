@@ -221,7 +221,7 @@ public class FormattedDiagnostic implements Diagnostic<JavaFileObject> {
 
   public boolean isJSpecifyDiagnostic() {
     return getKind().equals(Diagnostic.Kind.ERROR)
-        && getCode().equals("compiler.err.proc.messager")
+        && "compiler.err.proc.messager".equals(getCode())
         && getMessage(ENGLISH).startsWith("[nullness] ");
   }
 }

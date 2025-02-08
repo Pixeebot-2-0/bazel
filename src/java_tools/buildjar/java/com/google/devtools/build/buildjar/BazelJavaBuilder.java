@@ -44,7 +44,7 @@ public class BazelJavaBuilder {
   /** The main method of the BazelJavaBuilder. */
   public static void main(String[] args) {
     BazelJavaBuilder builder = new BazelJavaBuilder();
-    if (args.length == 1 && args[0].equals("--persistent_worker")) {
+    if (args.length == 1 && "--persistent_worker".equals(args[0])) {
       WorkRequestHandler workerHandler =
           new WorkRequestHandlerBuilder(
                   new WorkRequestHandler.WorkRequestCallback(

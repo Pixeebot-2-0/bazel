@@ -350,7 +350,7 @@ public class DepsCheckerClassVisitor extends ClassVisitor {
       if (opcode != Opcodes.INVOKEVIRTUAL) {
         return false;
       }
-      if (!owner.equals("java/lang/invoke/MethodHandle")) {
+      if (!"java/lang/invoke/MethodHandle".equals(owner)) {
         return false;
       }
       switch (name) {

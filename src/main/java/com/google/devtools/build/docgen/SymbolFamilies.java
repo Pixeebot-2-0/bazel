@@ -105,7 +105,7 @@ public class SymbolFamilies {
     env.put("native", new StarlarkNativeModule());
     for (Map.Entry<String, Object> entry :
         provider.getBazelStarlarkEnvironment().getUninjectedBuildBzlEnv().entrySet()) {
-      if (entry.getKey().equals("native")) {
+      if ("native".equals(entry.getKey())) {
         continue;
       }
       env.put(entry);

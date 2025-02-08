@@ -235,7 +235,7 @@ public final class PostGCMemoryUseRecorder implements NotificationListener {
 
     @Override
     public void beforeCommand(CommandEnvironment env) {
-      if (!env.getCommandName().equals("info")) {
+      if (!"info".equals(env.getCommandName())) {
         PostGCMemoryUseRecorder.get().reset();
       }
     }

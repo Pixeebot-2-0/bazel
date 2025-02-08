@@ -291,7 +291,7 @@ public class WorkspaceFactory {
       // There is both a "bind" WORKSPACE function and a "bind" rule. In workspace files,
       // the non-rule function takes precedence.
       // TODO(cparsons): Rule functions should not be added to WORKSPACE files.
-      if (!ruleClass.equals("bind")) {
+      if (!"bind".equals(ruleClass)) {
         StarlarkCallable ruleFunction = newRuleFunction(ruleClassMap, ruleClass, allowOverride);
         env.put(ruleClass, ruleFunction);
       }
@@ -352,7 +352,7 @@ public class WorkspaceFactory {
       // "workspace" is explicitly omitted from the native module,
       // as it must only occur at the top of a WORKSPACE file.
       // TODO(cparsons): Clean up separation between environments.
-      if (name.equals("workspace")) {
+      if ("workspace".equals(name)) {
         continue;
       }
       bindings.put(entry);
