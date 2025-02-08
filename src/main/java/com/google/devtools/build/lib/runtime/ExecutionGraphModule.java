@@ -710,7 +710,7 @@ public class ExecutionGraphModule extends BlazeModule {
       if (outputToNode.containsKey(getFirstOutput(action, action.getOutputs()))) {
         return;
       }
-      if (action.getMnemonic().equals("TestRunner")) {
+      if ("TestRunner".equals(action.getMnemonic())) {
         // Test actions have a different primary output than their spawns, which would result in
         // them recording an extra node. See b/290959382. Since test actions should always have/
         // spawns, we can just skip them here.

@@ -127,7 +127,7 @@ public final class StarlarkDocumentationProcessor {
     if (arg == null) {
       return false;
     }
-    return Boolean.parseBoolean(arg) || arg.equals("1");
+    return Boolean.parseBoolean(arg) || "1".equals(arg);
   }
 
   /**

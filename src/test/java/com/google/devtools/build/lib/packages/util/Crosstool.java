@@ -301,18 +301,18 @@ public final class Crosstool {
     public String getToolchainTargetConstraints() {
       ImmutableList<String> constraints = this.toolchainTargetConstraints;
       if (constraints.isEmpty()) {
-        if (getTargetCpu().equals("k8")) {
+        if ("k8".equals(getTargetCpu())) {
           // Use default constraints
           constraints =
               ImmutableList.of(
                   TestConstants.CONSTRAINTS_PACKAGE_ROOT + "cpu:x86_64",
                   TestConstants.CONSTRAINTS_PACKAGE_ROOT + "os:linux");
-        } else if (getTargetCpu().equals("darwin_x86_64")) {
+        } else if ("darwin_x86_64".equals(getTargetCpu())) {
           constraints =
               ImmutableList.of(
                   TestConstants.CONSTRAINTS_PACKAGE_ROOT + "cpu:x86_64",
                   TestConstants.CONSTRAINTS_PACKAGE_ROOT + "os:macos");
-        } else if (getTargetCpu().equals("darwin_arm64")) {
+        } else if ("darwin_arm64".equals(getTargetCpu())) {
           constraints =
               ImmutableList.of(
                   TestConstants.CONSTRAINTS_PACKAGE_ROOT + "cpu:arm64",

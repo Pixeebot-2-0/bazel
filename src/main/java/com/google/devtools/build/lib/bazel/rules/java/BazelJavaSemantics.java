@@ -56,7 +56,7 @@ public class BazelJavaSemantics implements JavaSemantics {
     // Look for src/.../resources to match Maven repository structure.
     List<String> segments = path.splitToListOfSegments();
     for (int i = 0; i < segments.size() - 2; ++i) {
-      if (segments.get(i).equals("src") && segments.get(i + 2).equals("resources")) {
+      if ("src".equals(segments.get(i)) && "resources".equals(segments.get(i + 2))) {
         return path.subFragment(i + 3);
       }
     }

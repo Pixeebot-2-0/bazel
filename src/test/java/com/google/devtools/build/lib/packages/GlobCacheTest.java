@@ -115,9 +115,9 @@ public class GlobCacheTest {
               @Override
               public Path getBuildFileForPackage(PackageIdentifier packageId) {
                 String packageName = packageId.getPackageFragment().getPathString();
-                if (packageName.equals("isolated")) {
+                if ("isolated".equals(packageName)) {
                   return scratch.resolve("isolated/BUILD");
-                } else if (packageName.equals("isolated/sub")) {
+                } else if ("isolated/sub".equals(packageName)) {
                   return scratch.resolve("isolated/sub/BUILD");
                 } else {
                   return null;

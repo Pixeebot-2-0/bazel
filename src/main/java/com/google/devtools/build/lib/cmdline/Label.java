@@ -309,10 +309,10 @@ public final class Label implements Comparable<Label>, StarlarkValue, SkyKey, Co
   }
 
   static String internIfConstantName(String name) {
-    if (name.equals(PKG_VISIBILITY_NAME)) {
+    if (PKG_VISIBILITY_NAME.equals(name)) {
       return PKG_VISIBILITY_NAME;
     }
-    if (name.equals(SUBPACKAGES_VISIBILITY_NAME)) {
+    if (SUBPACKAGES_VISIBILITY_NAME.equals(name)) {
       return SUBPACKAGES_VISIBILITY_NAME;
     }
     return name;
@@ -407,7 +407,7 @@ public final class Label implements Comparable<Label>, StarlarkValue, SkyKey, Co
     // PathFragments are normalized, so if we do this on a non-file target named '.'
     // then the package would be returned. Detect this and throw.
     // A target named '.' can never refer to a file.
-    Preconditions.checkArgument(!name.equals("."));
+    Preconditions.checkArgument(!".".equals(name));
     return packageIdentifier.getPackageFragment().getRelative(name);
   }
 
@@ -655,7 +655,7 @@ public final class Label implements Comparable<Label>, StarlarkValue, SkyKey, Co
   public static PathFragment getContainingDirectory(Label label) {
     PathFragment pkg = label.getPackageFragment();
     String name = label.name;
-    if (name.equals(".")) {
+    if (".".equals(name)) {
       return pkg;
     }
     if (PathFragment.isNormalizedRelativePath(name) && !PathFragment.containsSeparator(name)) {

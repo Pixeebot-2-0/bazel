@@ -69,7 +69,7 @@ public final class YankedVersionsUtil {
     ImmutableList<String> moduleStrs = ImmutableList.copyOf(Splitter.on(',').split(input));
 
     for (String moduleStr : moduleStrs) {
-      if (moduleStr.equals("all")) {
+      if ("all".equals(moduleStr)) {
         return true;
       }
 

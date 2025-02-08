@@ -65,7 +65,7 @@ public class TestConfiguration extends Fragment {
             && !affectedOptionsClass.equals(CoverageOptions.class)) {
           // options outside of TestOptions always prompt invalidation, except for --run_under.
           if (affectedOptionsClass.equals(CoreOptions.class)
-              && changedOption.getOptionName().equals("run_under")) {
+              && "run_under".equals(changedOption.getOptionName())) {
             return !Objects.equals(
                 RunUnder.trimForNonTestConfiguration((RunUnder) oldValue),
                 RunUnder.trimForNonTestConfiguration((RunUnder) newValue));

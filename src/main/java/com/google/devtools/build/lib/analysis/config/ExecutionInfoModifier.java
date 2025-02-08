@@ -82,7 +82,7 @@ public abstract class ExecutionInfoModifier {
                     .convert(specMatcher.group("pattern"), /* conversionContext= */ null)
                     .regexPattern()
                     .pattern(),
-                specMatcher.group("sign").equals("-"),
+                "-".equals(specMatcher.group("sign")),
                 specMatcher.group("key")));
       }
       return ExecutionInfoModifier.create(input, expressionBuilder.build());

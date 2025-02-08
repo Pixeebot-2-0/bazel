@@ -391,12 +391,12 @@ public final class StarlarkRuleConfiguredTargetUtil {
               "Provider '%s' should be specified in DefaultInfo if it's provided explicitly.",
               field);
         }
-      } else if (field.equals("output_groups")) {
+      } else if ("output_groups".equals(field)) {
         addOutputGroups(oldStyleProviders.getValue(field), builder);
-      } else if (field.equals("instrumented_files")) {
+      } else if ("instrumented_files".equals(field)) {
         addInstrumentedFiles(
             oldStyleProviders.getValue("instrumented_files", StructImpl.class), context, builder);
-      } else if (!field.equals("providers")) { // "providers" already handled above.
+      } else if (!"providers".equals(field)) { // "providers" already handled above.
         addProviderFromLegacySyntax(
             builder, oldStyleProviders, field, oldStyleProviders.getValue(field));
       }
@@ -528,17 +528,17 @@ public final class StarlarkRuleConfiguredTargetUtil {
       // 'return struct(executable = foo)' instead of 'return DefaultInfo(executable = foo)'.
       // TODO(cparsons): Look into deprecating this option.
       for (String field : info.getFieldNames()) {
-        if (field.equals("files")) {
+        if ("files".equals(field)) {
           Object x = info.getValue("files");
           Depset.cast(x, Artifact.class, "files"); // may throw exception
           files = (Depset) x;
-        } else if (field.equals("runfiles")) {
+        } else if ("runfiles".equals(field)) {
           statelessRunfiles = info.getValue("runfiles", Runfiles.class);
-        } else if (field.equals("data_runfiles")) {
+        } else if ("data_runfiles".equals(field)) {
           dataRunfiles = info.getValue("data_runfiles", Runfiles.class);
-        } else if (field.equals("default_runfiles")) {
+        } else if ("default_runfiles".equals(field)) {
           defaultRunfiles = info.getValue("default_runfiles", Runfiles.class);
-        } else if (field.equals("executable") && info.getValue("executable") != null) {
+        } else if ("executable".equals(field) && info.getValue("executable") != null) {
           executable = info.getValue("executable", Artifact.class);
         }
       }

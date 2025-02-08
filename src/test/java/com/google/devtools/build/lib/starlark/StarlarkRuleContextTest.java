@@ -4379,7 +4379,7 @@ public final class StarlarkRuleContextTest extends BuildViewTestCase {
           String apiMethod)
       throws Exception {
     boolean volatileAndExcuteUnconditionally =
-        apiMethod.equals("ctx.actions.transform_version_file");
+        "ctx.actions.transform_version_file".equals(apiMethod);
     scratch.file(
         "test/rules.bzl",
         "def t(d):",

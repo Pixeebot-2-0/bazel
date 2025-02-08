@@ -288,7 +288,7 @@ public class PatchUtil {
     line = Iterables.get(Splitter.on('\t').split(line), 0);
     if (line.length() > 4) {
       String path = line.substring(4).trim();
-      if (path.equals("/dev/null")) {
+      if ("/dev/null".equals(path)) {
         return null;
       }
       path = stripPath(path, strip);

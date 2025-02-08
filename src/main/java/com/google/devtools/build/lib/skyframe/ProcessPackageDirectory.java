@@ -243,7 +243,7 @@ public final class ProcessPackageDirectory {
 
     PathFragment candidateExecRoot = path.subFragment(0, segmentCount - depth);
 
-    if (!candidateExecRoot.getBaseName().equals("execroot")) {
+    if (!"execroot".equals(candidateExecRoot.getBaseName())) {
       return false;
     }
 

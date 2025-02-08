@@ -75,9 +75,9 @@ public class ThreadUtils {
               // still be another thread waiting for interrupt somewhere.
               if (firstTrace.get() == null
                   && (!stackTraceAndState.trace[0].getClassName().endsWith("misc.Unsafe")
-                      || !stackTraceAndState.trace[0].getMethodName().equals("park"))
+                      || !"park".equals(stackTraceAndState.trace[0].getMethodName()))
                   && (!stackTraceAndState.trace[0].getClassName().endsWith("java.lang.Object")
-                      || !stackTraceAndState.trace[0].getMethodName().equals("wait"))) {
+                      || !"wait".equals(stackTraceAndState.trace[0].getMethodName()))) {
                 firstTrace.compareAndSet(null, stackTraceAndState);
               }
               logger.atWarning().log(

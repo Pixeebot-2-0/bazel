@@ -134,7 +134,7 @@ public class BlazeVersionInfo {
    */
   public long getTimestamp() {
     String timestamp = buildData.get(BUILD_TIMESTAMP);
-    if (timestamp == null || timestamp.equals("0")) {
+    if (timestamp == null || "0".equals(timestamp)) {
       return new Date().getTime();
     }
     return Long.parseLong(timestamp);

@@ -333,19 +333,19 @@ public abstract class GenRuleBase implements RuleConfiguredTargetFactory {
 
     private String lookupVariableImpl(String variableName)
         throws ExpansionException, InterruptedException {
-      if (variableName.equals("SRCS")) {
+      if ("SRCS".equals(variableName)) {
         return Artifact.joinExecPaths(" ", resolvedSrcs.toList());
       }
 
-      if (variableName.equals("<")) {
+      if ("<".equals(variableName)) {
         return expandSingletonArtifact(resolvedSrcs, "$<", "input file");
       }
 
-      if (variableName.equals("OUTS")) {
+      if ("OUTS".equals(variableName)) {
         return Artifact.joinExecPaths(" ", filesToBuild.toList());
       }
 
-      if (variableName.equals("@")) {
+      if ("@".equals(variableName)) {
         return expandSingletonArtifact(filesToBuild, "$@", "output file");
       }
 
@@ -353,13 +353,13 @@ public abstract class GenRuleBase implements RuleConfiguredTargetFactory {
       PathFragment ruleDirExecPath =
           ruleContext.getBinOrGenfilesDirectory().getExecPath().getRelative(ruleDirPackagePath);
 
-      if (variableName.equals("RULEDIR")) {
+      if ("RULEDIR".equals(variableName)) {
         // The output root directory. This variable expands to the package's root directory
         // in the genfiles tree.
         return ruleDirExecPath.getPathString();
       }
 
-      if (variableName.equals("@D")) {
+      if ("@D".equals(variableName)) {
         // The output directory. If there is only one filename in outs,
         // this expands to the directory containing that file. If there are
         // multiple filenames, this variable instead expands to the

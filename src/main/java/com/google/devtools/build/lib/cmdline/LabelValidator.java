@@ -154,9 +154,9 @@ public final class LabelValidator {
     if (c == '/') {
       return "target names may not start with '/'";
     } else if (c == '.') {
-      if (targetName.startsWith("../") || targetName.equals("..")) {
+      if (targetName.startsWith("../") || "..".equals(targetName)) {
         return "target names may not contain up-level references '..'";
-      } else if (targetName.equals(".")) {
+      } else if (".".equals(targetName)) {
         return null; // See comment above; ideally should be an error.
       } else if (targetName.startsWith("./")) {
         return "target names may not contain '.' as a path segment";

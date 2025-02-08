@@ -200,7 +200,7 @@ public class IndexRegistry implements Registry {
     // 4. The vendor path doesn't exist, which means the URL is not vendored.
     if (vendorManager != null
         && checksum.isPresent()
-        && !url.getProtocol().equals("file")
+        && !"file".equals(url.getProtocol())
         && vendorManager.isUrlVendored(url)) {
       try {
         return Optional.of(vendorManager.readRegistryUrl(url, checksum.get()));
@@ -391,7 +391,7 @@ public class IndexRegistry implements Registry {
       String moduleBase = bazelRegistryJson.get().moduleBasePath;
       path = moduleBase + "/" + path;
       if (!PathFragment.isAbsolute(moduleBase)) {
-        if (uri.getScheme().equals("file")) {
+        if ("file".equals(uri.getScheme())) {
           if (uri.getPath().isEmpty() || !uri.getPath().startsWith("/")) {
             throw new IOException(
                 String.format(

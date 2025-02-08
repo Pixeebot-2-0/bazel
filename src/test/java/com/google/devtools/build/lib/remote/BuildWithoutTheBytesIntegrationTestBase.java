@@ -1718,7 +1718,7 @@ public abstract class BuildWithoutTheBytesIntegrationTestBase extends BuildInteg
             new Object() {
               @Subscribe
               public void onTargetCompleted(TargetCompleteEvent event) {
-                if (event.getLabel().toString().equals("//:proxy")) {
+                if ("//:proxy".equals(event.getLabel().toString())) {
                   try {
                     write(
                         "slow/BUILD",
@@ -1774,7 +1774,7 @@ public abstract class BuildWithoutTheBytesIntegrationTestBase extends BuildInteg
             new Object() {
               @Subscribe
               public void onTargetCompleted(TargetCompleteEvent event) {
-                if (event.getLabel().toString().equals("//:proxy")) {
+                if ("//:proxy".equals(event.getLabel().toString())) {
                   try {
                     write(
                         "slow/BUILD",

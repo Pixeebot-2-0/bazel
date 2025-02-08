@@ -126,16 +126,16 @@ public class ApiExporter {
             // TODO(b/255647089): We should use the type module's type here, since it will more
             // accurately represent Providers, but has some issues with builtins. For now, just
             // special case None which has type NoneType.
-            if (!name.equals("None")) {
+            if (!"None".equals(name)) {
               value.setType(name);
               value.setDoc(typeModule.doc());
             } else {
               value.setType("NoneType");
             }
           }
-        } else if (!name.equals("_builtins_dummy")) { // Ignore the test only dummy global.
+        } else if (!"_builtins_dummy".equals(name)) { // Ignore the test only dummy global.
           // Special case bool since we can't infer the type module for it.
-          if (name.equals("True") || name.equals("False")) {
+          if ("True".equals(name) || "False".equals(name)) {
             value.setType("bool");
           }
           value.setName(name);

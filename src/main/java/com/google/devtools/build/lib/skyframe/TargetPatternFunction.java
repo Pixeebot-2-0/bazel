@@ -83,7 +83,7 @@ public class TargetPatternFunction implements SkyFunction {
               //  allowlist. This is only a Google-internal problem and the scale of it is
               //  acceptable in the short term while cleaning up the allowlist.
               if (target instanceof OutputFile outputFile
-                  && outputFile.getGeneratingRule().getRuleClass().equals("cc_library")) {
+                  && "cc_library".equals(outputFile.getGeneratingRule().getRuleClass())) {
                 continue;
               }
               resolvedTargetsBuilder.add(target);

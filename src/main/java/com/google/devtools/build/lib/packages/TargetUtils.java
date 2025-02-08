@@ -69,7 +69,7 @@ public final class TargetUtils {
   }
 
   public static boolean isTestSuiteRuleName(String name) {
-    return name.equals("test_suite");
+    return "test_suite".equals(name);
   }
 
   /**

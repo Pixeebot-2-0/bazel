@@ -466,7 +466,7 @@ public final class PackageFactory {
       void extractGlobPatterns(CallExpression call) {
         if (call.getFunction() instanceof Identifier) {
           String functionName = ((Identifier) call.getFunction()).getName();
-          if (!functionName.equals("glob") && !functionName.equals("subpackages")) {
+          if (!"glob".equals(functionName) && !"subpackages".equals(functionName)) {
             return;
           }
 
@@ -480,9 +480,9 @@ public final class PackageFactory {
               if (i == 0) { // first positional argument
                 include = arg.getValue();
               }
-            } else if (name.equals("include")) {
+            } else if ("include".equals(name)) {
               include = arg.getValue();
-            } else if (name.equals("exclude_directories")) {
+            } else if ("exclude_directories".equals(name)) {
               excludeDirectories = arg.getValue();
             }
           }
@@ -498,7 +498,7 @@ public final class PackageFactory {
                     exclude = false;
                   }
                 }
-                if (functionName.equals("glob")) {
+                if ("glob".equals(functionName)) {
                   (exclude ? globs : globsWithDirs).add(pattern);
                 } else {
                   subpackages.add(pattern);
@@ -515,7 +515,7 @@ public final class PackageFactory {
       void recordGeneratorName(CallExpression call) {
         for (Argument arg : call.getArguments()) {
           if (arg instanceof Argument.Keyword
-              && arg.getName().equals("name")
+              && "name".equals(arg.getName())
               && arg.getValue() instanceof StringLiteral) {
             generatorNameByLocation.put(
                 call.getLparenLocation(), ((StringLiteral) arg.getValue()).getValue());

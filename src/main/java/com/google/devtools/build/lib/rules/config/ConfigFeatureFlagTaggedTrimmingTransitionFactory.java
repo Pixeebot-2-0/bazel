@@ -130,7 +130,7 @@ public class ConfigFeatureFlagTaggedTrimmingTransitionFactory
       // is done out of an abundance of caution and as a statement of intent for the future.
       for (Label entry : attrs.get(attributeName, NODEP_LABEL_LIST)) {
         String packageName = entry.getPackageName();
-        if (packageName.equals("command_line_option")
+        if ("command_line_option".equals(packageName)
             || packageName.startsWith("command_line_option/")) {
           continue;
         }

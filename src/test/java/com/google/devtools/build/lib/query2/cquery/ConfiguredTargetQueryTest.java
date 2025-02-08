@@ -73,7 +73,7 @@ public abstract class ConfiguredTargetQueryTest extends PostAnalysisQueryTest<Cq
 
     Iterator<CqueryNode> resultIterator = result.iterator();
     CqueryNode first = resultIterator.next();
-    if (first.getLabel().toString().equals("//test:foo.java")) {
+    if ("//test:foo.java".equals(first.getLabel().toString())) {
       assertThat(getConfiguration(first)).isNull();
       assertThat(getConfiguration(resultIterator.next())).isNotNull();
     } else {

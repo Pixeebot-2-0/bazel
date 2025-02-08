@@ -55,7 +55,7 @@ public class FileSystemUtils {
     if (baseName.length() == 0) {
       throw new IllegalArgumentException("Child must not be empty string ('')");
     }
-    if (baseName.equals(".") || baseName.equals("..")) {
+    if (".".equals(baseName) || "..".equals(baseName)) {
       throw new IllegalArgumentException("baseName must not be '" + baseName + "'");
     }
     if (baseName.indexOf('/') != -1) {

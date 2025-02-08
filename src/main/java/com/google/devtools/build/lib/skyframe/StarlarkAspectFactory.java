@@ -139,9 +139,9 @@ public class StarlarkAspectFactory implements ConfiguredAspectFactory {
         // Old-style struct, that may contain declared providers.
         StructImpl struct = (StructImpl) aspectStarlarkObject;
         for (String field : struct.getFieldNames()) {
-          if (field.equals("output_groups")) {
+          if ("output_groups".equals(field)) {
             addOutputGroups(struct.getValue(field), builder);
-          } else if (field.equals("providers")) {
+          } else if ("providers".equals(field)) {
             Object providers = struct.getValue(field);
             // TODO(adonovan): can we be more specific than iterable, and use Sequence.cast?
             if (!(providers instanceof Iterable)) {

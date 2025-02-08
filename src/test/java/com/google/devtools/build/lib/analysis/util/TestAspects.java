@@ -201,7 +201,7 @@ public class TestAspects {
               .setRunfilesSupport(null, null)
               .add(RunfilesProvider.class, RunfilesProvider.simple(Runfiles.EMPTY));
 
-      if (ruleContext.getRule().getRuleClassObject().getName().equals("honest")) {
+      if ("honest".equals(ruleContext.getRule().getRuleClassObject().getName())) {
         builder.addStarlarkDeclaredProvider(
             StarlarkInfo.create(REQUIRED_PROVIDER, ImmutableMap.of(), null));
       }
@@ -934,7 +934,7 @@ public class TestAspects {
       (rule) -> {
         if (rule.isAttrDefined("baz", STRING)) {
           String value = rule.getAttr("baz").toString();
-          if (!value.equals("")) {
+          if (!"".equals(value)) {
             return new AspectParameters.Builder().addAttribute("baz", value).build();
           }
         }

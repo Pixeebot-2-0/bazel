@@ -1859,7 +1859,7 @@ public abstract class CcModule
         convertFromNoneable(starlarkFeatureConfiguration, null);
     FdoContext fdoContext = ccToolchainProvider.getFdoContext();
     LinkTargetType staticLinkTargetType = null;
-    if (alwayslink && !actions.getRuleContext().getRule().getRuleClass().equals("swift_library")) {
+    if (alwayslink && !"swift_library".equals(actions.getRuleContext().getRule().getRuleClass())) {
       // TODO(b/202252560): Fix for swift_library's implicit output.
       staticLinkTargetType = LinkTargetType.ALWAYS_LINK_STATIC_LIBRARY;
     } else {
@@ -1945,7 +1945,7 @@ public abstract class CcModule
         ((BazelModuleContext)
                 Module.ofInnermostEnclosingStarlarkFunction(thread, 1).getClientData())
             .label();
-    return label.getPackageIdentifier().getRepository().getName().equals("_builtins");
+    return "_builtins".equals(label.getPackageIdentifier().getRepository().getName());
   }
 
   protected static void isCalledFromStarlarkCcCommon(StarlarkThread thread) throws EvalException {
@@ -2346,11 +2346,11 @@ public abstract class CcModule
         default:
           // fall through
       }
-    } else if (language == Language.OBJC && outputType.equals("executable")) {
+    } else if (language == Language.OBJC && "executable".equals(outputType)) {
       dynamicLinkTargetType = LinkTargetType.OBJC_EXECUTABLE;
-    } else if (language == Language.OBJCPP && outputType.equals("executable")) {
+    } else if (language == Language.OBJCPP && "executable".equals(outputType)) {
       dynamicLinkTargetType = LinkTargetType.OBJC_EXECUTABLE;
-    } else if (language == Language.OBJC && outputType.equals("archive")) {
+    } else if (language == Language.OBJC && "archive".equals(outputType)) {
       staticLinkTargetType = LinkTargetType.OBJC_FULLY_LINKED_ARCHIVE;
     } else {
       throw Starlark.errorf("Language '%s' does not support %s", language, outputType);

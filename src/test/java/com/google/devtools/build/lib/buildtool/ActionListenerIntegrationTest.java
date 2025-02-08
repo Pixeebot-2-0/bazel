@@ -103,7 +103,7 @@ public final class ActionListenerIntegrationTest extends BuildIntegrationTestCas
 
       @Override
       protected void visitAction(ActionAnalysisMetadata action) {
-        if (action.getMnemonic().equals("Javac")) {
+        if ("Javac".equals(action.getMnemonic())) {
           actions.add(action);
         }
       }
@@ -342,7 +342,7 @@ public final class ActionListenerIntegrationTest extends BuildIntegrationTestCas
 
       @Override
       protected void visitAction(ActionAnalysisMetadata action) {
-        if (action.getMnemonic().equals("CppCompile")) {
+        if ("CppCompile".equals(action.getMnemonic())) {
           actions.add(action);
         }
       }

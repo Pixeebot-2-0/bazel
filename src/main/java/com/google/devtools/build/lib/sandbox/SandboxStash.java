@@ -452,7 +452,7 @@ public class SandboxStash {
    * directory for the action that was stashed to the path that is expected by the current test.
    */
   private static boolean isTestAction(String mnemonic) {
-    return mnemonic.equals(TEST_RUNNER_MNEMONIC);
+    return TEST_RUNNER_MNEMONIC.equals(mnemonic);
   }
 
   /**

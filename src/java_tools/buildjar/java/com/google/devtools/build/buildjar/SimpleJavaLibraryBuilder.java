@@ -208,7 +208,7 @@ public class SimpleJavaLibraryBuilder implements Closeable {
             Files.createDirectories(to.getParent());
             Files.copy(jarFile.getInputStream(entry), to);
             build.getSourceFiles().add(to);
-          } else if (fileName.equals(PROTOBUF_META_NAME)) {
+          } else if (PROTOBUF_META_NAME.equals(fileName)) {
             ByteStreams.copy(jarFile.getInputStream(entry), protobufMetadataBuffer);
           }
         }

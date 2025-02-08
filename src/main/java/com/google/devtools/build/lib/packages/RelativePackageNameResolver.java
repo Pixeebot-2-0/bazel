@@ -67,7 +67,7 @@ public class RelativePackageNameResolver {
 
     PathFragment relative = PathFragment.create(relativePkg);
 
-    if (discardBuild && relative.getBaseName().equals("BUILD")) {
+    if (discardBuild && "BUILD".equals(relative.getBaseName())) {
       relative = relative.getParentDirectory();
     }
 

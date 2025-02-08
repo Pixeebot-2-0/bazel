@@ -1016,11 +1016,11 @@ public class ResourceUsageAnalyzer {
         resourceObfuscation.put(owner, pair);
       }
       if (type == ResourceType.STYLEABLE) {
-        if (tokens[0].equals("int[]")) {
+        if ("int[]".equals(tokens[0])) {
           ArrayList<Integer> values = new ArrayList<>();
           for (int i = 4; ; ++i) { // skip tokens "int[] identifier = {"
             String token = tokens[i];
-            if (token.equals("}")) {
+            if ("}".equals(token)) {
               // empty set?
               break;
             }

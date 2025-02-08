@@ -357,7 +357,7 @@ public final class VendorCommand implements BlazeCommand {
     Map<String, String> vendorPathToUrl = new HashMap<>();
     for (Entry<String, Optional<Checksum>> entry : registryFiles.entrySet()) {
       URL url = URI.create(entry.getKey()).toURL();
-      if (url.getProtocol().equals("file")) {
+      if ("file".equals(url.getProtocol())) {
         continue;
       }
 

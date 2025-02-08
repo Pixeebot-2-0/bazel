@@ -109,7 +109,7 @@ final class FragmentProducer implements StateMachine {
     Preconditions.checkState(fragmentIndex < globDetail.patternFragments().size());
 
     String patternFragment = globDetail.patternFragments().get(fragmentIndex);
-    if (!patternFragment.equals("**")) {
+    if (!"**".equals(patternFragment)) {
       return handlePatternFragment(patternFragment);
     }
 

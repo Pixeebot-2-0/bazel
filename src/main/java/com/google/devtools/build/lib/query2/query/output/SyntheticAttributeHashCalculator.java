@@ -77,7 +77,7 @@ class SyntheticAttributeHashCalculator {
     for (Attribute attr : rule.getAttributes()) {
       String attrName = attr.getName();
 
-      if (attrName.equals("generator_location")) {
+      if ("generator_location".equals(attrName)) {
         // generator_location can be ignored for the purpose of telling if a rule has changed.
         continue;
       }

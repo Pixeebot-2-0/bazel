@@ -356,7 +356,7 @@ public final class StarlarkEvaluationTest {
         throws EvalException, InterruptedException {
       ImmutableMap.Builder<String, Object> builder = ImmutableMap.builder();
       for (String name : Starlark.dir(thread.mutability(), thread.getSemantics(), this)) {
-        if (name.equals("interrupted_struct_field")) {
+        if ("interrupted_struct_field".equals(name)) {
           continue; // skip, because getattr would be interrupted
         }
         Object v = Starlark.getattr(thread.mutability(), thread.getSemantics(), this, name, null);

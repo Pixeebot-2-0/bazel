@@ -273,7 +273,7 @@ public class GlobTest {
   private Set<Path> resolvePaths(String... relativePaths) {
     Set<Path> expectedFiles = new HashSet<>();
     for (String expected : relativePaths) {
-      Path file = expected.equals(".") ? tmpPath : tmpPath.getRelative(expected);
+      Path file = ".".equals(expected) ? tmpPath : tmpPath.getRelative(expected);
       expectedFiles.add(file);
     }
     return expectedFiles;

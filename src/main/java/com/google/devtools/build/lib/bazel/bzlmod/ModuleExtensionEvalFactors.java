@@ -80,7 +80,7 @@ public abstract class ModuleExtensionEvalFactors implements Comparable<ModuleExt
   }
 
   public static ModuleExtensionEvalFactors parse(String s) {
-    if (s.equals(GENERAL_EXTENSION)) {
+    if (GENERAL_EXTENSION.equals(s)) {
       return ModuleExtensionEvalFactors.create("", "");
     }
 

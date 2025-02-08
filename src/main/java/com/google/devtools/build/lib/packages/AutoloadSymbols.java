@@ -302,7 +302,7 @@ public class AutoloadSymbols {
       if (AUTOLOAD_CONFIG.get(symbol).rule()) {
         nativeBindings.remove(symbol);
       } else {
-        if (symbol.equals("proto_common_do_not_use")) {
+        if ("proto_common_do_not_use".equals(symbol)) {
           if (envBuilder.get("proto_common_do_not_use") instanceof StarlarkInfo) {
             // proto_common_do_not_use can't be completely removed, because the implementation of
             // proto rules in protobuf still relies on

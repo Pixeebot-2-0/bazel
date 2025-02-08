@@ -182,7 +182,7 @@ public final class RepositoryName {
     }
 
     // Some special cases for more user-friendly error messages.
-    if (name.equals(".") || name.equals("..")) {
+    if (".".equals(name) || "..".equals(name)) {
       throw LabelParser.syntaxErrorf(
           "invalid repository name '%s': repo names are not allowed to be '%s'", name, name);
     }

@@ -123,10 +123,10 @@ public final class PrerequisitesCollection {
     List<ConfiguredTargetAndData> prerequisiteConfiguredTargets;
     // android_binary, android_test, and android_binary_internal override deps to use a split
     // transition.
-    if ((rule.getRuleClass().equals("android_binary")
-            || rule.getRuleClass().equals("android_test")
-            || rule.getRuleClass().equals("android_binary_internal"))
-        && attributeName.equals("deps")
+    if (("android_binary".equals(rule.getRuleClass())
+            || "android_test".equals(rule.getRuleClass())
+            || "android_binary_internal".equals(rule.getRuleClass()))
+        && "deps".equals(attributeName)
         && attribute.getTransitionFactory().isSplit()) {
       // TODO(b/168038145): Restore legacy behavior of returning the prerequisites from the first
       // portion of the split transition.

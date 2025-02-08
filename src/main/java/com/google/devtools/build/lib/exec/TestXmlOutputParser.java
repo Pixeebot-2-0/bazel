@@ -311,9 +311,9 @@ public final class TestXmlOutputParser {
         case "time" -> builder.setRunDurationMillis(parseTime(value));
         case "result" -> builder.setResult(value);
         case "status" -> {
-          if (value.equals("notrun")) {
+          if ("notrun".equals(value)) {
             builder.setRun(false);
-          } else if (value.equals("run")) {
+          } else if ("run".equals(value)) {
             builder.setRun(true);
           }
         }

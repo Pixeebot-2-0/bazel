@@ -44,7 +44,7 @@ public class SkymeldModule extends BlazeModule {
     if (effectiveValue && !buildRequestOptions.performExecutionPhase) {
       // Aquery and Cquery implicitly set --nobuild, so there's no need to have a warning here: it
       // makes no different from the users' perspective.
-      if (!(commandName.equals("aquery") || commandName.equals("cquery"))) {
+      if (!("aquery".equals(commandName) || "cquery".equals(commandName))) {
         logger.atInfo().log(
             "--experimental_merged_skyframe_analysis_execution is incompatible with"
                 + " --nobuild and will be ignored.");

@@ -740,7 +740,7 @@ public class BzlLoadFunction implements SkyFunction {
     // TODO(#11437): For the non-bundled case, should we consider interning the Root rather than
     // constructing a new one each time?
     Root root;
-    if (builtinsBzlPath.equals("%bundled%")) {
+    if ("%bundled%".equals(builtinsBzlPath)) {
       // May be null in tests, but in that case the builtins path shouldn't be set to %bundled%.
       root =
           Preconditions.checkNotNull(
@@ -748,7 +748,7 @@ public class BzlLoadFunction implements SkyFunction {
               "rule class provider does not specify a builtins root; either call"
                   + " setBuiltinsBzlZipResource() or else set --experimental_builtins_bzl_path to"
                   + " a root");
-    } else if (builtinsBzlPath.equals("%workspace%")) {
+    } else if ("%workspace%".equals(builtinsBzlPath)) {
       String packagePath =
           Preconditions.checkNotNull(
               ruleClassProvider.getBuiltinsBzlPackagePathInSource(),

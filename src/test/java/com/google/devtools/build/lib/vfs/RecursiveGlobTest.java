@@ -128,7 +128,7 @@ public class RecursiveGlobTest {
   private Set<Path> resolvePaths(String... relativePaths) {
     Set<Path> expectedFiles = new HashSet<>();
     for (String expected : relativePaths) {
-      Path file = expected.equals(".")
+      Path file = ".".equals(expected)
           ? tmpPath
           : tmpPath.getRelative(expected);
       expectedFiles.add(file);

@@ -103,7 +103,7 @@ public final class JavaCompileActionTestHelper {
   private static int mainClassIndex(List<String> args) {
     for (int idx = 0; idx < args.size(); idx++) {
       String arg = args.get(idx);
-      if (arg.equals("-jar")) {
+      if ("-jar".equals(arg)) {
         return idx + 2;
       }
       if (arg.contains("JavaBuilder") && !arg.endsWith(".jar")) {
@@ -115,7 +115,7 @@ public final class JavaCompileActionTestHelper {
 
   private static OptionsParser getOptions(JavaCompileAction javac) throws Exception {
     checkArgument(
-        javac.getMnemonic().equals("Javac"),
+        "Javac".equals(javac.getMnemonic()),
         "expected a Javac action, was %s",
         javac.getMnemonic());
     return new OptionsParser(getJavacArguments(javac));

@@ -1484,7 +1484,7 @@ public final class SkyframeActionExecutor {
 
   private static void reportMissingOutputFile(
       Action action, Artifact output, Reporter reporter, boolean isSymlink, IOException exception) {
-    boolean genrule = action.getMnemonic().equals("Genrule");
+    boolean genrule = "Genrule".equals(action.getMnemonic());
     String prefix = (genrule ? "declared output '" : "output '") + output.prettyPrint() + "' ";
     logger.atWarning().log(
         "Error creating %s%s%s: %s",
@@ -1643,7 +1643,7 @@ public final class SkyframeActionExecutor {
       return;
     }
 
-    if (action.getMnemonic().equals("FilesetTraversal")) {
+    if ("FilesetTraversal".equals(action.getMnemonic())) {
       // Omit warning for filesets (b/1437948).
       return;
     }

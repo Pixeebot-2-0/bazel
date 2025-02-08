@@ -65,7 +65,7 @@ public final class WorkspaceFactoryHelper {
     // 'repo_mapping' is not an explicit attribute of any rule and so it would
     // result in a rule error if propagated to the rule factory.
     return kwargs.entrySet().stream()
-        .filter(x -> !x.getKey().equals("repo_mapping"))
+        .filter(x -> !"repo_mapping".equals(x.getKey()))
         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 

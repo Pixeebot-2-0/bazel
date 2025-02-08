@@ -785,7 +785,7 @@ public class CppCompileAction extends AbstractAction implements IncludeScannable
     ImmutableList.Builder<String> cmdlineIncludes = ImmutableList.builder();
     for (Iterator<String> argi = args.iterator(); argi.hasNext(); ) {
       String arg = argi.next();
-      if (arg.equals("-include") && argi.hasNext()) {
+      if ("-include".equals(arg) && argi.hasNext()) {
         cmdlineIncludes.add(argi.next());
       } else if (arg.startsWith("-FI") || arg.startsWith("/FI")) {
         if (arg.length() > 3) {

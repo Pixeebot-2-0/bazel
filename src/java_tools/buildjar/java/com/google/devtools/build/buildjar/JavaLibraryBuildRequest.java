@@ -433,7 +433,7 @@ public final class JavaLibraryBuildRequest {
       if (option.startsWith("-J")) { // ignore the VM options.
         continue;
       }
-      if (option.equals("-processor") || option.equals("-processorpath")) {
+      if ("-processor".equals(option) || "-processorpath".equals(option)) {
         throw new IllegalStateException(
             "Using "
                 + option

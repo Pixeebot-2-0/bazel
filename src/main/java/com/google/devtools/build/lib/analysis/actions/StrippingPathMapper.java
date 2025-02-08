@@ -112,10 +112,10 @@ public final class StrippingPathMapper implements PathMapper {
     // strings, not a structured command line that would allow transparent path mapping.
     // Instead, reimplement location expansion in Starlark and have it return an Args object.
     this.isJavaAction =
-        mnemonic.equals("Javac")
-            || mnemonic.equals("JavacTurbine")
-            || mnemonic.equals("Turbine")
-            || mnemonic.equals("JavaResourceJar");
+        "Javac".equals(mnemonic)
+            || "JavacTurbine".equals(mnemonic)
+            || "Turbine".equals(mnemonic)
+            || "JavaResourceJar".equals(mnemonic);
     this.outputArtifactRoot = primaryOutput.getRoot();
     this.strippedOutputArtifactRoot = new MappedArtifactRoot(map(outputArtifactRoot.getExecPath()));
   }
@@ -164,11 +164,11 @@ public final class StrippingPathMapper implements PathMapper {
     }
     // Add your favorite Starlark mnemonic that needs custom arg processing here.
     if (!mnemonic.contains("Android")
-        && !mnemonic.equals("MergeManifests")
-        && !mnemonic.equals("StarlarkRClassGenerator")
-        && !mnemonic.equals("StarlarkAARGenerator")
-        && !mnemonic.equals("JetifySrcs")
-        && !mnemonic.equals("Desugar")) {
+        && !"MergeManifests".equals(mnemonic)
+        && !"StarlarkRClassGenerator".equals(mnemonic)
+        && !"StarlarkAARGenerator".equals(mnemonic)
+        && !"JetifySrcs".equals(mnemonic)
+        && !"Desugar".equals(mnemonic)) {
       return chunk;
     }
 
@@ -339,7 +339,7 @@ public final class StrippingPathMapper implements PathMapper {
    * Strips the configuration prefix from an output artifact's exec path.
    */
   private static PathFragment strip(PathFragment execPath) {
-    if (execPath.subFragment(1, 2).getPathString().equals("tmp")) {
+    if ("tmp".equals(execPath.subFragment(1, 2).getPathString())) {
       return execPath
           .subFragment(0, 2)
           .getRelative(FIXED_CONFIG_SEGMENT)

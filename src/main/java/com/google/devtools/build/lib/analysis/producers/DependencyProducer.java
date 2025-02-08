@@ -122,7 +122,7 @@ final class DependencyProducer
     @Nullable Attribute attribute = kind.getAttribute();
 
     if (kind == VISIBILITY_DEPENDENCY
-        || (attribute != null && attribute.getName().equals("visibility"))) {
+        || (attribute != null && "visibility".equals(attribute.getName()))) {
       // This is always a null transition because visibility targets are not configurable.
       return computePrerequisites(
           AttributeConfiguration.ofVisibility(), /* executionPlatformLabel= */ null);

@@ -188,7 +188,7 @@ public class Proto implements StarlarkValue {
       } else if (v instanceof StarlarkFloat) {
         String s = v.toString();
         // Encoding to textproto via proto.encode_text requires "inf" for "+inf".
-        if (s.equals("+inf")) {
+        if ("+inf".equals(s)) {
           s = "inf";
         }
         emitLine(name, ": ", s);

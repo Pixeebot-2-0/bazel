@@ -89,10 +89,10 @@ public class CcLauncherInfo extends NativeInfo {
   private void checkRestrictedUsage(RuleContext ruleContext) {
     Rule rule = ruleContext.getRule();
     if (rule.getRuleClassObject().isStarlark()
-        || (!rule.getRuleClass().equals("java_binary")
-            && !rule.getRuleClass().equals("java_test")
-            && !rule.getRuleClass().equals("py_binary")
-            && !rule.getRuleClass().equals("py_test"))) {
+        || (!"java_binary".equals(rule.getRuleClass())
+            && !"java_test".equals(rule.getRuleClass())
+            && !"py_binary".equals(rule.getRuleClass())
+            && !"py_test".equals(rule.getRuleClass()))) {
       throw new IllegalStateException(RESTRICTION_ERROR_MESSAGE + rule.getRuleClass());
     }
   }

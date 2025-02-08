@@ -1120,7 +1120,7 @@ public final class SkyframeBuildView {
     }
 
     TestType fromExplicitFlagOrTag;
-    if (buildDriverKeyTestContext.getTestStrategy().equals("exclusive")
+    if ("exclusive".equals(buildDriverKeyTestContext.getTestStrategy())
         || TargetUtils.isExclusiveTestRule(rule)
         || (TargetUtils.isExclusiveIfLocalTestRule(rule) && TargetUtils.isLocalTestRule(rule))) {
       fromExplicitFlagOrTag = TestType.EXCLUSIVE;

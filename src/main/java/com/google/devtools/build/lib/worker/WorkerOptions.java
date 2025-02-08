@@ -50,7 +50,7 @@ public class WorkerOptions extends OptionsBase {
     @Override
     public Map.Entry<String, Integer> convert(String input) throws OptionsParsingException {
       // TODO(steinman): Make auto value return a reasonable multiplier of host capacity.
-      if (input == null || input.equals("null") || input.equals("auto")) {
+      if (input == null || "null".equals(input) || "auto".equals(input)) {
         return Maps.immutableEntry(null, null);
       }
       int pos = input.indexOf('=');
@@ -60,7 +60,7 @@ public class WorkerOptions extends OptionsBase {
       }
       String name = input.substring(0, pos);
       String value = input.substring(pos + 1);
-      if (value.equals("auto")) {
+      if ("auto".equals(value)) {
         return Maps.immutableEntry(name, null);
       }
 

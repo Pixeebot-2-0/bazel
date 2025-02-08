@@ -441,7 +441,7 @@ public class BuildDocCollector {
 
         for (AttributeInfo attributeInfo : ruleInfo.getAttributeList()) {
           String attributeName = attributeInfo.getName();
-          if (attributeName.equals("name")) {
+          if ("name".equals(attributeName)) {
             // We do not want the implicit "name" attribute injected into proto output by
             // starlark_doc_extract because we inject "name" at the template level in
             // templates/be/rules.vm

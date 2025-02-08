@@ -64,7 +64,7 @@ public class ShallowObjectSizeComputer {
         throw new IllegalStateException("Only OpenJDK is supported");
       }
 
-      if (!System.getProperty("sun.arch.data.model").equals("64")) {
+      if (!"64".equals(System.getProperty("sun.arch.data.model"))) {
         throw new IllegalStateException("Only 64-bit JVMs are supported");
       }
 

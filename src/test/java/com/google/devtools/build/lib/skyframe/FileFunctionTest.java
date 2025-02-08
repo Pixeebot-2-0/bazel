@@ -601,7 +601,7 @@ public class FileFunctionTest {
           @Override
           @SuppressWarnings("UnsynchronizedOverridesSynchronized")
           protected byte[] getFastDigest(PathFragment path) {
-            return path.getBaseName().equals("unreadable") ? expectedDigest : null;
+            return "unreadable".equals(path.getBaseName()) ? expectedDigest : null;
           }
         });
 
@@ -984,7 +984,7 @@ public class FileFunctionTest {
         new CustomInMemoryFs(manualClock) {
           @Override
           protected boolean isReadable(PathFragment path) throws IOException {
-            if (path.getBaseName().equals("unreadable")) {
+            if ("unreadable".equals(path.getBaseName())) {
               throw new IOException("isReadable failed");
             }
             return super.isReadable(path);

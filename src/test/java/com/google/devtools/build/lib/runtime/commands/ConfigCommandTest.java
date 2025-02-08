@@ -351,7 +351,7 @@ public class ConfigCommandTest extends BuildIntegrationTestCase {
     Map.Entry<String, Pair<String, String>> optionDiff =
         Iterators.getOnlyElement(
             fragmentDiff.optionsDiff.entrySet().stream()
-                .filter(x -> !x.getKey().equals("affected by starlark transition"))
+                .filter(x -> !"affected by starlark transition".equals(x.getKey()))
                 .iterator());
     assertThat(optionDiff.getKey()).isEqualTo("platform_suffix");
     // Convert from Pair<firstVal, secondVal> to an ImmutableList because the ordering of the

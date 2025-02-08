@@ -278,7 +278,7 @@ public abstract class CommonPrerequisiteValidator implements PrerequisiteValidat
           description.contains("PackageSpecificationProvider")
               || description.contains("PackageSpecificationInfo");
       // TODO(plf): Add the PackageSpecificationProvider to the 'visibility' attribute.
-      if (!attrName.equals("visibility")
+      if (!"visibility".equals(attrName)
           && !attrName.equals(FunctionSplitTransitionAllowlist.ATTRIBUTE_NAME)
           && !containsPackageSpecificationProvider) {
         context.attributeError(

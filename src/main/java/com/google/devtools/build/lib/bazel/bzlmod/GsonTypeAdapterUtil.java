@@ -422,7 +422,7 @@ public final class GsonTypeAdapterUtil {
       @Override
       public Optional<Checksum> read(JsonReader jsonReader) throws IOException {
         String checksumString = jsonReader.nextString();
-        if (checksumString.equals(NOT_FOUND_MARKER)) {
+        if (NOT_FOUND_MARKER.equals(checksumString)) {
           return Optional.empty();
         }
         try {

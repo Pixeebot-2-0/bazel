@@ -102,7 +102,7 @@ public class TargetLoadingUtil {
   private static PathFragment getContainingDirectory(Label label) {
     PathFragment pkg = label.getPackageFragment();
     String name = label.getName();
-    return name.equals(".") ? pkg : pkg.getRelative(name).getParentDirectory();
+    return ".".equals(name) ? pkg : pkg.getRelative(name).getParentDirectory();
   }
 
   /**

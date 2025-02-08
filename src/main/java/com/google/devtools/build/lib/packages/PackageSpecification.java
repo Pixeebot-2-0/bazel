@@ -134,7 +134,7 @@ public abstract class PackageSpecification {
               + " --incompatible_fix_package_group_reporoot_syntax.");
     }
     if (!allowPublicPrivate
-        && (spec.equals(PUBLIC_VISIBILITY) || spec.equals(PRIVATE_VISIBILITY))) {
+        && (PUBLIC_VISIBILITY.equals(spec) || PRIVATE_VISIBILITY.equals(spec))) {
       throw new InvalidPackageSpecificationException(
           String.format(
               "Use of \"%s\" package specification requires enabling"
@@ -145,7 +145,7 @@ public abstract class PackageSpecification {
     if (spec.startsWith(NEGATIVE_PREFIX)) {
       negative = true;
       spec = spec.substring(NEGATIVE_PREFIX.length());
-      if (spec.equals(PUBLIC_VISIBILITY) || spec.equals(PRIVATE_VISIBILITY)) {
+      if (PUBLIC_VISIBILITY.equals(spec) || PRIVATE_VISIBILITY.equals(spec)) {
         throw new InvalidPackageSpecificationException(
             String.format("Cannot negate \"%s\" package specification", spec));
       }
@@ -158,9 +158,9 @@ public abstract class PackageSpecification {
   private static PackageSpecification fromStringPositive(
       RepositoryName repositoryName, String spec, boolean repoRootMeansCurrentRepo)
       throws InvalidPackageSpecificationException {
-    if (spec.equals(PUBLIC_VISIBILITY)) {
+    if (PUBLIC_VISIBILITY.equals(spec)) {
       return AllPackages.INSTANCE;
-    } else if (spec.equals(PRIVATE_VISIBILITY)) {
+    } else if (PRIVATE_VISIBILITY.equals(spec)) {
       return NoPackages.INSTANCE;
     }
     if (!spec.startsWith("//")) {
@@ -174,7 +174,7 @@ public abstract class PackageSpecification {
     if (spec.endsWith(ALL_BENEATH_SUFFIX)) {
       allBeneath = true;
       pkgPath = spec.substring(0, spec.length() - ALL_BENEATH_SUFFIX.length());
-      if (pkgPath.equals("/")) {
+      if ("/".equals(pkgPath)) {
         // spec was "//...".
         if (repoRootMeansCurrentRepo) {
           pkgPath = "//";

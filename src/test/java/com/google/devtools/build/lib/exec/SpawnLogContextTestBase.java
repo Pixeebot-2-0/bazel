@@ -2110,12 +2110,12 @@ public abstract class SpawnLogContextTestBase {
     closeAndAssertLog(
         context,
         defaultSpawnExecBuilder()
-            .setRemotable(!requirement.equals("no-remote"))
-            .setCacheable(!requirement.equals("no-cache"))
+            .setRemotable(!"no-remote".equals(requirement))
+            .setCacheable(!"no-cache".equals(requirement))
             .setRemoteCacheable(
-                !requirement.equals("no-cache")
-                    && !requirement.equals("no-remote")
-                    && !requirement.equals("no-remote-cache"))
+                !"no-cache".equals(requirement)
+                    && !"no-remote".equals(requirement)
+                    && !"no-remote-cache".equals(requirement))
             .build());
   }
 

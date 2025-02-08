@@ -189,7 +189,7 @@ public abstract class CommandLineEvent implements BuildEventWithOrderConstraint 
       // as a default in this case.
       CommandLineSection.Builder builder =
           CommandLineSection.newBuilder().setSectionLabel("residual");
-      if (commandName.equals("run")
+      if ("run".equals(commandName)
           && !commandOptions.getOptions(BuildEventProtocolOptions.class).includeResidueInRunBepEvent
           && !commandOptions.getResidue().isEmpty()) {
         String target = commandOptions.getResidue().get(0);
@@ -370,12 +370,12 @@ public abstract class CommandLineEvent implements BuildEventWithOrderConstraint 
                           .filter(
                               option -> {
                                 String optionName = option.getOptionName();
-                                return !optionName.equals("ignore_all_rc_files")
-                                    && !optionName.equals("blazerc")
-                                    && !optionName.equals("master_blazerc")
-                                    && !optionName.equals("bazelrc")
-                                    && !optionName.equals("master_bazelrc")
-                                    && !optionName.equals("invocation_policy");
+                                return !"ignore_all_rc_files".equals(optionName)
+                                    && !"blazerc".equals(optionName)
+                                    && !"master_blazerc".equals(optionName)
+                                    && !"bazelrc".equals(optionName)
+                                    && !"master_bazelrc".equals(optionName)
+                                    && !"invocation_policy".equals(optionName);
                               })
                           .collect(Collectors.toList()))
                   .addAllOption(

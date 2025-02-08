@@ -348,10 +348,10 @@ public abstract class ImplicitOutputsFunction {
    * for {@link #fromTemplates(Iterable)}.
    */
   private static ImmutableSet<String> attributeValues(AttributeMap rule, String attrName) {
-    if (attrName.equals("dirname")) {
+    if ("dirname".equals(attrName)) {
       PathFragment dir = PathFragment.create(rule.getLabel().getName()).getParentDirectory();
       return dir.isEmpty() ? ImmutableSet.of("") : ImmutableSet.of(dir.getPathString() + "/");
-    } else if (attrName.equals("basename")) {
+    } else if ("basename".equals(attrName)) {
       return ImmutableSet.of(PathFragment.create(rule.getLabel().getName()).getBaseName());
     }
 

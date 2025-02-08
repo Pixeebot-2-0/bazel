@@ -48,7 +48,7 @@ public record Mount(Path path, String type, ImmutableList<String> opts) {
       Pattern.compile("^[^\\s#]\\S*\\s+(?<file>\\S*)\\s+(?<vfstype>cgroup2?)\\s+(?<mntops>\\S*).*");
 
   public boolean isV2() {
-    return type().equals("cgroup2");
+    return "cgroup2".equals(type());
   }
 
   static Mount create(Path path, String type, ImmutableList<String> opts) {

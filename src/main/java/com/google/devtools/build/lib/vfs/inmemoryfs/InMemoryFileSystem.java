@@ -750,7 +750,7 @@ public class InMemoryFileSystem extends AbstractFileSystemWithCustomStat {
    * getParentDirectory.
    */
   private static boolean isRootDirectory(@Nullable PathFragment path) {
-    return path == null || path.getPathString().equals("/");
+    return path == null || "/".equals(path.getPathString());
   }
 
   /**

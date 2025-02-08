@@ -257,7 +257,7 @@ public class BlazeJavacMain {
       return Optional.empty();
     }
     Matcher matcher;
-    if (!diagnostic.getCode().equals("compiler.err.cant.access")
+    if (!"compiler.err.cant.access".equals(diagnostic.getCode())
         || arguments.system() == null
         || !(matcher = INCOMPATIBLE_SYSTEM_CLASS_PATH_ERROR.matcher(diagnostic.getMessage(ENGLISH)))
             .find()) {

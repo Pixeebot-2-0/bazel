@@ -150,18 +150,18 @@ public final class JavacOptions {
 
     @Override
     public boolean processOption(String option, Iterator<String> remaining) {
-      if (option.equals("-nowarn")) {
+      if ("-nowarn".equals(option)) {
         // It is equivalent to -Xlint:none
         resetBasisTo(BasisXlintSelection.None);
         return true;
-      } else if (option.equals("-Xlint")) {
+      } else if ("-Xlint".equals(option)) {
         resetBasisTo(BasisXlintSelection.Recommended);
         return true;
       } else if (option.startsWith("-Xlint")) {
         for (String arg : option.substring("-Xlint:".length()).split(",", -1)) {
-          if (arg.equals("all") || arg.isEmpty()) {
+          if ("all".equals(arg) || arg.isEmpty()) {
             resetBasisTo(BasisXlintSelection.All);
-          } else if (arg.equals("none")) {
+          } else if ("none".equals(arg)) {
             resetBasisTo(BasisXlintSelection.None);
           } else if (arg.startsWith("-")) {
             arg = arg.substring("-".length());
@@ -278,7 +278,7 @@ public final class JavacOptions {
         modular.add(option);
         return true;
       }
-      if (option.equals("--enable-preview")) {
+      if ("--enable-preview".equals(option)) {
         preview = true;
         return true;
       }
@@ -345,7 +345,7 @@ public final class JavacOptions {
         builder.process(option);
         return true;
       }
-      if (option.equals("-Werror")) {
+      if ("-Werror".equals(option)) {
         builder.all();
         return true;
       }

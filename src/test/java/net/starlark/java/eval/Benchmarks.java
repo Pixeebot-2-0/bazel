@@ -80,15 +80,15 @@ public final class Benchmarks {
     // parse flags
     int i;
     for (i = 0; i < args.length; i++) {
-      if (args[i].equals("--")) {
+      if ("--".equals(args[i])) {
         i++;
         break;
 
-      } else if (args[i].equals("--help")) {
+      } else if ("--help".equals(args[i])) {
         System.out.println(HELP);
         System.exit(0);
 
-      } else if (args[i].equals("--filter")) {
+      } else if ("--filter".equals(args[i])) {
         if (++i == args.length) {
           fail("--filter needs an argument");
         }
@@ -98,7 +98,7 @@ public final class Benchmarks {
           fail("for --filter, invalid regexp: %s", ex.getMessage());
         }
 
-      } else if (args[i].equals("--seconds")) {
+      } else if ("--seconds".equals(args[i])) {
         if (++i == args.length) {
           fail("--seconds needs an argument");
         }
@@ -111,7 +111,7 @@ public final class Benchmarks {
           fail("--seconds out of range");
         }
 
-      } else if (args[i].equals("--iterations")) {
+      } else if ("--iterations".equals(args[i])) {
         if (++i == args.length) {
           fail("--iterations needs an integer argument");
         }

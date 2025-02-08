@@ -66,7 +66,7 @@ public final class InstrumentationFilterSupport {
     // Fix up if one of the test targets is a top-level target. "//foo[/:]" matches everything
     // under //foo and subpackages, but "//[/:]" only matches targets directly under the top-level
     // package.
-    if (instrumentationFilter.equals("^//[/:]")) {
+    if ("^//[/:]".equals(instrumentationFilter)) {
       instrumentationFilter = "^//";
     }
     if (!packageFilters.isEmpty()) {

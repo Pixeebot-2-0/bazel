@@ -241,10 +241,10 @@ public class BuildRuleWithDefaultsBuilder extends BuildRuleBuilder {
   // Heuristics which might help to generate valid rules.
   // This is a bit hackish, but it helps some generated ruleclasses to pass analysis phase.
   private void populateAttributesHeuristics(String rulePkg, Attribute attribute) {
-    if (attribute.getName().equals("srcs") && attribute.getType() == BuildType.LABEL_LIST) {
+    if ("srcs".equals(attribute.getName()) && attribute.getType() == BuildType.LABEL_LIST) {
       // If there is a srcs attribute it might be better to populate it even if it's not mandatory
       populateLabelAttribute(rulePkg, attribute);
-    } else if (attribute.getName().equals("main_class") && attribute.getType() == Type.STRING) {
+    } else if ("main_class".equals(attribute.getName()) && attribute.getType() == Type.STRING) {
       populateStringAttribute(attribute);
     }
   }

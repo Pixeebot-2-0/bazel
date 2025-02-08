@@ -767,7 +767,7 @@ public final class BlazeRuntime implements BugReport.BlazeRuntimeInterface {
     DebugLoggerConfigurator.flushServerLog();
     storedExitCode.set(null);
     boolean keepStateAfterBuild =
-        !env.getCommandName().equals("clean") && commonOptions.keepStateAfterBuild;
+        !"clean".equals(env.getCommandName()) && commonOptions.keepStateAfterBuild;
     return BlazeCommandResult.withResponseExtensions(
         finalCommandResult, env.getResponseExtensions(), keepStateAfterBuild);
   }
@@ -850,7 +850,7 @@ public final class BlazeRuntime implements BugReport.BlazeRuntimeInterface {
     setupUncaughtHandlerAtStartup(args);
     List<BlazeModule> modules = createModules(moduleClasses);
     // blaze.cc will put --batch first if the user set it.
-    if (args.length >= 1 && args[0].equals("--batch")) {
+    if (args.length >= 1 && "--batch".equals(args[0])) {
       // Run Blaze in batch mode.
       System.exit(batchMain(modules, args));
     }
