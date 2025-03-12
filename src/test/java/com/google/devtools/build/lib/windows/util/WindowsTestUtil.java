@@ -15,6 +15,7 @@
 package com.google.devtools.build.lib.windows.util;
 
 import static com.google.common.truth.Truth.assertWithMessage;
+import io.github.pixee.security.SystemCommand;
 import static org.junit.Assert.fail;
 
 import com.google.common.base.Strings;
@@ -109,7 +110,7 @@ public final class WindowsTestUtil {
 
   /** Run a Command Prompt command. */
   public static void runCommand(String cmd) throws IOException {
-    Process p = Runtime.getRuntime().exec(cmd);
+    Process p = SystemCommand.runCommand(Runtime.getRuntime(), cmd);
     try {
       // Wait no more than 5 seconds to create all junctions.
       p.waitFor(5, TimeUnit.SECONDS);
