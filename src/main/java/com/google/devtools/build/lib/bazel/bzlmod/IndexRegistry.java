@@ -16,6 +16,8 @@
 package com.google.devtools.build.lib.bazel.bzlmod;
 
 import static com.google.common.collect.ImmutableMap.toImmutableMap;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import com.google.common.base.Preconditions;
@@ -431,7 +433,7 @@ public class IndexRegistry implements Registry {
     if (bazelRegistryJson.isPresent() && bazelRegistryJson.get().mirrors != null) {
       for (String mirror : bazelRegistryJson.get().mirrors) {
         try {
-          var unused = new URL(mirror);
+          var unused = Urls.create(mirror, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         } catch (MalformedURLException e) {
           throw new IOException("Malformed mirror URL", e);
         }
