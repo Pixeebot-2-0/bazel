@@ -19,6 +19,7 @@ import com.github.luben.zstd.Zstd;
 import com.google.common.io.ByteStreams;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +30,7 @@ import org.junit.runners.JUnit4;
 public class ZstdCompressingInputStreamTest {
   @Test
   public void compressionWorks() throws IOException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     byte[] data = new byte[50];
     rand.nextBytes(data);
 
@@ -41,7 +42,7 @@ public class ZstdCompressingInputStreamTest {
 
   @Test
   public void streamCanBeCompressedWithMinimumBufferSize() throws IOException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     byte[] data = new byte[50];
     rand.nextBytes(data);
 

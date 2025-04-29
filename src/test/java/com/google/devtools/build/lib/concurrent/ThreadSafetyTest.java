@@ -19,6 +19,7 @@ import com.google.devtools.build.lib.concurrent.ThreadSafety.Immutable;
 import com.google.devtools.build.lib.concurrent.ThreadSafety.ThreadCompatible;
 import com.google.devtools.build.lib.concurrent.ThreadSafety.ThreadHostile;
 import com.google.devtools.build.lib.concurrent.ThreadSafety.ThreadSafe;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.Test;
@@ -204,7 +205,7 @@ public class ThreadSafetyTest {
       return incrementCache;
     }
     // Methods of an Immutable class need not be deterministic.
-    private static Random random = new Random();
+    private static Random random = new SecureRandom();
     public int choose() {
       return random.nextInt(value);
     }

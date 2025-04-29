@@ -14,6 +14,7 @@
 package com.google.devtools.build.lib.remote;
 
 import static com.google.common.truth.Truth.assertThat;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 
 import com.github.luben.zstd.Zstd;
@@ -38,7 +39,7 @@ public class ChunkerTest {
 
   @Test
   public void chunkingShouldWork() throws IOException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     byte[] expectedData = new byte[21];
     rand.nextBytes(expectedData);
 

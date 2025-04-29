@@ -14,6 +14,7 @@
 package com.google.devtools.build.lib.skyframe;
 
 import static com.google.common.truth.Truth.assertThat;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 
 import com.google.common.base.Throwables;
@@ -127,7 +128,7 @@ public final class TreeArtifactMetadataTest extends ArtifactFunctionTestCase {
             .collect(Collectors.toList());
 
     for (int i = 0; i < attempts; i++) {
-      Collections.shuffle(children, new Random());
+      Collections.shuffle(children, new SecureRandom());
       Artifact treeArtifact = createTreeArtifact("out");
       TreeArtifactValue value = evaluateTreeArtifact(treeArtifact, children);
       assertThat(value.getChildPaths()).containsExactlyElementsIn(children);

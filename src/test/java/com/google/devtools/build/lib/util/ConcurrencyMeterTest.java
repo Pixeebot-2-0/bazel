@@ -20,6 +20,7 @@ import com.google.devtools.build.lib.clock.BlazeClock;
 import com.google.devtools.build.lib.clock.Clock;
 import com.google.devtools.build.lib.testutil.ManualClock;
 import com.google.devtools.build.lib.util.ConcurrencyMeter.Ticket;
+import java.security.SecureRandom;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -125,7 +126,7 @@ public final class ConcurrencyMeterTest {
   public void testThreadSafety() throws Exception {
     int requestsPerThread = 10;
     int threads = 10;
-    Random r = new Random();
+    Random r = new SecureRandom();
 
     ConcurrencyMeter scheduler = new ConcurrencyMeter("meter", 100, BlazeClock.instance());
     ExecutorService exec = Executors.newFixedThreadPool(threads);

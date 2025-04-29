@@ -16,6 +16,7 @@ package com.google.devtools.build.zip;
 
 import static com.google.common.truth.Truth.assertThat;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 
 import com.google.common.primitives.Bytes;
@@ -50,7 +51,7 @@ public class ZipWriterTest {
   private File test;
 
   @Before public void setup() throws IOException {
-    rand = new Random();
+    rand = new SecureRandom();
     cal = Calendar.getInstance();
     cal.clear();
     cal.set(Calendar.YEAR, rand.nextInt(128) + 1980); // Zip files have 7-bit year resolution.
