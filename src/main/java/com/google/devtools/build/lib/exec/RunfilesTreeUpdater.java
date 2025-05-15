@@ -14,6 +14,7 @@
 package com.google.devtools.build.lib.exec;
 
 import static com.google.devtools.build.lib.analysis.config.BuildConfigurationValue.RunfileSymlinksMode.SKIP;
+import io.github.pixee.security.BoundedLineReader;
 import static java.nio.charset.StandardCharsets.ISO_8859_1;
 
 import com.google.common.base.Throwables;
@@ -174,7 +175,7 @@ public class RunfilesTreeUpdater {
     try (BufferedReader reader =
         new BufferedReader(new InputStreamReader(outputManifest.getInputStream(), ISO_8859_1))) {
       // If it is created at all, the manifest always contains at least one line.
-      relativeRunfilePath = reader.readLine().split(" ", -1)[0];
+      relativeRunfilePath = BoundedLineReader.readLine(reader, 5_000_000).split(" ", -1)[0];
     } catch (IOException e) {
       // Instead of failing outright, just assume the runfiles directory is not populated.
       return false;

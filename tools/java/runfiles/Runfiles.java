@@ -14,6 +14,7 @@
 
 package com.google.devtools.build.runfiles;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -491,7 +492,7 @@ public final class Runfiles {
           new BufferedReader(
               new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8))) {
         String line;
-        while ((line = r.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(r, 5_000_000)) != null) {
           String runfile;
           String realPath;
           if (line.startsWith(" ")) {

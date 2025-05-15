@@ -14,6 +14,7 @@
 package com.google.devtools.build.lib.authandtls;
 
 import static com.google.common.base.Predicates.not;
+import io.github.pixee.security.BoundedLineReader;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Objects.requireNonNull;
 
@@ -87,7 +88,7 @@ public class NetrcParser {
     }
 
     private void processLine() throws IOException {
-      String line = bufferedReader.readLine();
+      String line = BoundedLineReader.readLine(bufferedReader, 5_000_000);
       if (line == null) {
         return;
       }
