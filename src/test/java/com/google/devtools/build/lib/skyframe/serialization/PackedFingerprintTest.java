@@ -18,6 +18,7 @@ import static com.google.devtools.build.lib.skyframe.serialization.PackedFingerp
 
 import com.google.common.collect.ImmutableList;
 import com.google.devtools.build.lib.skyframe.serialization.testutils.SerializationTester;
+import java.security.SecureRandom;
 import java.util.HexFormat;
 import java.util.Random;
 import org.junit.Test;
@@ -26,7 +27,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public final class PackedFingerprintTest {
-  private final Random rng = new Random();
+  private final Random rng = new SecureRandom();
 
   @Test
   public void plainConversion_preservesBytes() {

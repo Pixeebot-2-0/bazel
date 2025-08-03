@@ -16,6 +16,7 @@ package com.google.devtools.build.lib.actions;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.truth.Truth.assertThat;
 import static java.nio.charset.StandardCharsets.US_ASCII;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
@@ -412,7 +413,7 @@ public final class ActionInputMapTest {
   public void stress() {
     ArrayList<TestEntry> data = new ArrayList<>();
     {
-      Random rng = new Random();
+      Random rng = new SecureRandom();
       HashSet<TestInput> deduper = new HashSet<>();
       for (int i = 0; i < 100000; ++i) {
         byte[] bytes = new byte[80];

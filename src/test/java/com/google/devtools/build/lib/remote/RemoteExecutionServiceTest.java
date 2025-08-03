@@ -24,6 +24,7 @@ import static com.google.devtools.build.lib.remote.util.Utils.getFromFuture;
 import static com.google.devtools.build.lib.util.StringEncoding.unicodeToInternal;
 import static com.google.devtools.build.lib.vfs.FileSystemUtils.readContent;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
@@ -2124,7 +2125,7 @@ public class RemoteExecutionServiceTest {
             NestedSetBuilder.create(Order.STABLE_ORDER, input));
     FakeSpawnExecutionContext context = newSpawnExecutionContext(spawn);
     RemoteAction action = service.buildRemoteAction(spawn, context);
-    Random random = new Random();
+    Random random = new SecureRandom();
 
     for (int i = 0; i < taskCount; ++i) {
       boolean shouldInterrupt = random.nextBoolean();
