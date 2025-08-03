@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.SocketException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -30,7 +31,7 @@ public final class FreePortFinder {
    * found.
    */
   public static int pickUnusedRandomPort() throws IOException, InterruptedException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     for (int i = 0; i < 128; ++i) {
       int port = rand.nextInt(64551) + 1024;
       if (isPortAvailable(port)) {

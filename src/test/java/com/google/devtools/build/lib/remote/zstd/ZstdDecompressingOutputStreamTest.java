@@ -20,6 +20,7 @@ import com.github.luben.zstd.Zstd;
 import com.github.luben.zstd.ZstdOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ import org.junit.runners.JUnit4;
 public class ZstdDecompressingOutputStreamTest {
   @Test
   public void decompressionWorks() throws IOException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     byte[] data = new byte[50];
     rand.nextBytes(data);
     byte[] compressed = Zstd.compress(data);
@@ -46,7 +47,7 @@ public class ZstdDecompressingOutputStreamTest {
 
   @Test
   public void streamCanBeDecompressedOneByteAtATime() throws IOException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     byte[] data = new byte[50];
     rand.nextBytes(data);
     byte[] compressed = Zstd.compress(data);
